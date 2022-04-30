@@ -29,22 +29,96 @@
     // gap: 0.5rem;
     // max-width: 100%;
     --grid-layout-gap: 10px;
-    --grid-column-count: 12;
-    --grid-item--min-width: 8.999999%;
+    --grid-column-count: 12;  //default 6 cols.
+    @include small(){
+        &.max-fr-sm-1{
+            --grid-column-count: 1;
+        }
+        &.max-fr-sm-2{
+            --grid-column-count: 2;
+        }
+        &.max-fr-sm-3{
+            --grid-column-count: 3;
+        }
+        &.max-fr-sm-4{
+            --grid-column-count: 4;
+        }
+        &.max-fr-sm-5{
+            --grid-column-count: 5;
+        }
+        &.max-fr-sm-6{
+            --grid-column-count: 6;
+        }
+        &.max-fr-sm-7{
+            --grid-column-count: 7;
+        }
+        &.max-fr-sm-8{
+            --grid-column-count: 8;
+        }
+        &.max-fr-sm-9{
+            --grid-column-count: 9;
+        }
+        &.max-fr-sm-10{
+            --grid-column-count: 10;
+        }
+        &.max-fr-sm-11{
+            --grid-column-count: 11;
+        }
+        &.max-fr-sm-12{
+            --grid-column-count: 12;
+        }
+    }
+    
+    @include large(){
+        &.max-fr-lg-1{
+            --grid-column-count: 1;
+        }
+        &.max-fr-lg-2{
+            --grid-column-count: 2;
+        }
+        &.max-fr-lg-3{
+            --grid-column-count: 3;
+        }
+        &.max-fr-lg-4{
+            --grid-column-count: 4;
+        }
+        &.max-fr-lg-5{
+            --grid-column-count: 5;
+        }
+        &.max-fr-lg-6{
+            --grid-column-count: 6;
+        }
+        &.max-fr-lg-7{
+            --grid-column-count: 7;
+        }
+        &.max-fr-lg-8{
+            --grid-column-count: 8;
+        }
+        &.max-fr-lg-9{
+            --grid-column-count: 9;
+        }
+        &.max-fr-lg-10{
+            --grid-column-count: 10;
+        }
+        &.max-fr-lg-11{
+            --grid-column-count: 11;
+        }
+        &.max-fr-lg-12{
+            --grid-column-count: 12;
+        }
+    }
 
+    --grid-item--min-width: 100px;
     --gap-count: calc(var(--grid-column-count) - 1);
     --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
     --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
 
     display: grid;
-    //Use max() to set the width of #div1 to whichever value is largest, 50% or 300px:
-    //width: max(50%, 300px);
+
     grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
     grid-gap: var(--grid-layout-gap);
-
-    align-items: center;
-    justify-content: space-between;
 }
+
 
 // @include small(){
 //     .grid:not(.static)>* {
@@ -65,9 +139,7 @@
 //     }
 // }
 
-// .grid>*{
-//     min-width: 30%;
-// }
+
 
 /*
 Create 1 to 12 grid as below
