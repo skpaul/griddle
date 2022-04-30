@@ -1,0 +1,186 @@
+//https://learncssgrid.com/
+
+
+/*
+    An Auto-Filling CSS Grid With Max Columns of a Minimum Size
+    https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/
+*/
+[class^="grid-"] {
+    display: grid;
+    gap: 0.5rem;
+    // clear: both;
+    // content: "";
+    // box-sizing: border-box;
+    // width: 100%;
+
+    // //select all child elements
+    // &>*{
+    //     box-sizing: border-box;
+    //     width: 100%;
+    // }
+}
+
+
+
+
+//A grid with unlimited columns in a row
+.grid{
+    // display: grid;
+    // gap: 0.5rem;
+    // max-width: 100%;
+    --grid-layout-gap: 10px;
+    --grid-column-count: 12;
+    --grid-item--min-width: 8.999999%;
+
+    --gap-count: calc(var(--grid-column-count) - 1);
+    --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
+    --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
+
+    display: grid;
+    //Use max() to set the width of #div1 to whichever value is largest, 50% or 300px:
+    //width: max(50%, 300px);
+    grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
+    grid-gap: var(--grid-layout-gap);
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+// @include small(){
+//     .grid:not(.static)>* {
+//         width: 100% !important;
+//     }
+// }
+// grid-auto-flow: row;
+
+// @include small(){
+//     .grid:not(.static){
+//         grid-auto-flow: row;
+//     }
+// }
+
+// @include large(){
+//     .grid{
+//         grid-auto-flow: column;
+//     }
+// }
+
+// .grid>*{
+//     min-width: 30%;
+// }
+
+/*
+Create 1 to 12 grid as below
+    .grid-4{
+        grid-template-columns: repeat(4, 1fr);
+    }
+*/
+@for $i from 1 through 12 {
+    .grid-#{$i} {
+        grid-template-columns: repeat(#{$i}, 1fr);
+    }
+}
+
+//.fr-auto stacks all children vertically on mobile and horizontally on large. 
+//if used this class, no need to apply any rule for child for small/large screen.
+//Example: <div class="grid-4 fr-auto"> .... </div>
+.fr-auto{
+    @include sm(){
+        grid-template-columns: 1fr;
+    }
+}
+
+@for $i from 1 through 12 {
+    .gc-start-#{$i}, .fr-start-#{$i}{
+        grid-column-start: #{$i};
+    }
+
+    .gc-end-#{$i}, .fr-end-#{$i}{
+        grid-column-end: #{$i+1};
+    }
+
+    .gc-span-#{$i}, .fr-span-#{$i}, .gc-#{$i}, .fr-#{$i}{
+        grid-column-end: span #{$i};
+    }
+}
+
+@include small(){
+    @for $i from 1 through 12 {
+        .gc-start-#{$i}-sm, .fr-start-#{$i}-sm{
+            grid-column-start: #{$i};
+        }
+
+        .gc-end-#{$i}-sm, .fr-end-#{$i}-sm{
+            grid-column-end: #{$i+1};
+        }
+
+        .gc-span-#{$i}-sm, .fr-span-#{$i}-sm, .gc-#{$i}-sm, .fr-#{$i}-sm{
+            grid-column-end: span #{$i};
+        }
+    }
+}
+
+@include large(){
+    @for $i from 1 through 12 {
+        .gc-start-#{$i}-lg, .fr-start-#{$i}-lg{
+            grid-column-start: #{$i};
+        }
+
+        .gc-end-#{$i}-lg, .fr-end-#{$i}-lg{
+            grid-column-end: #{$i+1};
+        }
+
+        .gc-span-#{$i}-lg, .fr-span-#{$i}-lg, .gc-#{$i}-lg, .fr-#{$i}-lg{
+            grid-column-end: span #{$i};
+        }
+    }
+}
+
+
+
+.col,
+.row {
+  box-sizing: border-box;
+  width: 100%;
+}
+.col {
+  float: left;
+}
+.col.one {
+  width: 8.333%;
+}
+.col.two {
+  width: 16.666%;
+}
+.col.three {
+  width: 25%;
+}
+.col.four {
+  width: 33.333%;
+}
+.col.five {
+  width: 41.666%;
+}
+.col.six {
+  width: 50%;
+}
+.col.seven {
+  width: 58.333%;
+}
+.col.eight {
+  width: 66.666%;
+}
+.col.nine {
+  width: 75%;
+}
+.col.ten {
+  width: 83.333%;
+}
+.col.eleven {
+  width: 91.666%;
+}
+@media (max-width: 600px) {
+  .row:not(.static) > .col {
+    width: 100%;
+  }
+}
