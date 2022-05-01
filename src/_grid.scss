@@ -18,13 +18,14 @@
     //     box-sizing: border-box;
     //     width: 100%;
     // }
+
 }
 
 
 
 
 //A grid with unlimited columns in a row
-.grid{
+.grid-auto{
     // display: grid;
     // gap: 0.5rem;
     // max-width: 100%;
@@ -147,6 +148,26 @@ Create 1 to 12 grid as below
         grid-template-columns: repeat(4, 1fr);
     }
 */
+
+//Responsive grid starts --------->
+@include large(){
+    @for $i from 1 through 12 {
+        .grid-#{$i}-lg, .grid-lg-#{$i} {
+            grid-template-columns: repeat(#{$i}, 1fr);
+        }
+    }
+}
+
+@include small(){
+    @for $i from 1 through 12 {
+        .grid-#{$i}-sm, .grid-sm-#{$i} {
+            grid-template-columns: repeat(#{$i}, 1fr);
+        }
+    }
+}
+//<-----------Responsive grid ends//
+
+
 @for $i from 1 through 12 {
     .grid-#{$i} {
         grid-template-columns: repeat(#{$i}, 1fr);
