@@ -5,9 +5,9 @@
     An Auto-Filling CSS Grid With Max Columns of a Minimum Size
     https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/
 */
-[class^="grid-"] {
+[class^="grid"]{
     display: grid;
-    gap: 0.5rem;
+    gap: .5rem;
     // clear: both;
     // content: "";
     // box-sizing: border-box;
@@ -18,8 +18,22 @@
     //     box-sizing: border-box;
     //     width: 100%;
     // }
-
 }
+
+//Simple grid starts ---->
+.grid{
+    // display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    // grid-auto-flow: row !important;
+}
+
+@include small(){
+    .grid:not(.static){
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+//Simple grid starts ---->
 
 
 
@@ -141,14 +155,6 @@
 // }
 
 
-
-/*
-Create 1 to 12 grid as below
-    .grid-4{
-        grid-template-columns: repeat(4, 1fr);
-    }
-*/
-
 //Responsive grid starts --------->
 @include large(){
     @for $i from 1 through 12 {
@@ -180,6 +186,12 @@ Create 1 to 12 grid as below
 .fr-auto{
     @include sm(){
         grid-template-columns: 1fr;
+    }
+}
+
+@for $i from 1 through 12 {
+    .fr#{$i}{
+        grid-column-end: span #{$i};
     }
 }
 
