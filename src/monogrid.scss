@@ -1,5 +1,6 @@
 
 // sass --watch monogrid.scss:../monogrid.min.css --style compressed
-
+// Use double slash '//' to exclude comments from complied css.
 @import 'media_queries'; /*this must be on 2nd top*/
-@import 'grid'; 
+@import 'grid-container'; 
+@import 'grid-item'; 
