@@ -1,6 +1,15 @@
 
 // sass --watch monogrid.scss:../monogrid.min.css --style compressed
 // Use double slash '//' to exclude comments from complied css.
+
+//https://learncssgrid.com/
+
+//An Auto-Filling CSS Grid With Max Columns of a Minimum Size
+//https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/
+
+//https://css-tricks.com/expandable-sections-within-a-css-grid/
+//https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow
+
 @import 'media_queries'; /*this must be on 2nd top*/
 @import 'grid-container'; 
 @import 'grid-item'; 
