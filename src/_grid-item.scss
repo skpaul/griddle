@@ -6,7 +6,7 @@
 
 //grid column width ------------>
 
-.grid,.monogrid {
+.grid,.griddle {
     &>.fullwidth {
         grid-column: 1 / -1;
     }
@@ -34,7 +34,7 @@
 //<--------------grid column width//
 
 //grid column start position ------------>
-.grid,.monogrid {
+.grid,.griddle {
     //from1 - from12
     @for $i from 1 through 12 {
         &>.from#{$i} {
