@@ -14,30 +14,64 @@
 
     <link href="assets/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/site.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/skpaul/griddle@0.0.2/griddle.min.css">
+    <link rel="stylesheet" href="../griddle.min.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/skpaul/griddle@0.0.2/griddle.min.css"> -->
+    <style>
+        code:not(code[class*=language-]) {
+            /* font-family: Consolas; */
+            font-family: "Inconsolata", monospace;
+            /* font-family: "Source Code Pro", monospace; */
+            border-radius: 0.3rem;
+            border: 1px solid #2b3e59;
+            padding: 4px 6px;
+            white-space: nowrap;
+            background-color: #162233;
+            /* font-size: 0.8rem; */
+            color: #ffe8b1;
+        }
+        code[class*=language-] {
+            white-space: break-spaces;
+        }
+
+        :not(pre)>code[class*=language-],
+        pre[class*=language-] {
+            /* background: #22272e; */
+            background: #162233;
+            border-radius: 0.3rem;
+            border: 1px solid #2b3e59;
+            padding: 4px 6px;
+            /* white-space: ; */
+        }
+
+        section{
+            margin-top: 4rem;
+        }
+
+        h2{
+            color: #ccd8e3;
+            font-size: 2rem;
+        }
+    </style>
 </head>
 
 <body>
-
     <header>
-        <div style="text-align: center; font-size: 4rem;">Griddle</div>
-        <h1 style="text-align: center;">CSS Grid based layout</h1>
-        <p style="text-align: center;">Alpha version</p>
+        <div style="text-align: center; font-size: 4rem;">Griddle </div>
+        <h1 style="text-align: center;">Minimalistic grid system based on CSS Grid</h1>
+        <p style="text-align: center;"><code>v1.0</code></p>
     </header>
     <main class="" style="position:relative;">
         <p>
+            Griddle uses <code>fr</code> (fraction) in stead of <code>col</code> (column).  <br> "fr" is the default unit in CSS Grid world. 
+        </p>
 
-        </p>
-        <p>
-            In MonoGrid, we've used fr (fraction) in stead of col (column). "fr" is the default unit in CSS Grid world. 
-        </p>
         <h2>Creating a grid</h2>
         <p>
-            Use <span class="inline-code">.grid</span> class for a quick & simple grid. It'll create a 12-fraction grid on large and convert it to 1-fraction grid on small. You can also use <span class="inline-code">.monogrid</span> to avoid conflict with other .grid class.
-        </p>
+            Use <code>.grid</code> to create a grid. <code>.grid</code> creates a 12-fraction grid on large device and convert it to 1-fraction grid on small device. <br>
 
-        Fig:1
-        <div class="grid">
+            You also can use <code>.griddle</code> instead of <code>.grid</code>, to avoid confict with other CSS framework.
+        </p>        
+        <div class="grid fullwidth">
             <div>fr1</div>
             <div>fr2</div>
             <div>fr3</div>
@@ -52,7 +86,7 @@
             <div>fr12</div>
         </div>
 
-        <div class="card">
+        <div>
             <pre><code class="language-html" style="font-size: 1.2rem;">
                 &ltdiv class="grid">
                     &ltdiv>fr1&lt/div>
@@ -68,156 +102,182 @@
                     &ltdiv>fr11&lt/div>
                     &ltdiv>fr12&lt/div>
                 &lt/div>
-                </code> </pre>
-        </div><!-- card ends -->
-
-
-        <!-- fr customization -->
-        <h2>Customize grid fractions</h2>
-        <p>
-            Use <span class="inline-code">.fr*</span> class to create a *-fraction grid on all devices. * = 1 to 12. Please note that <span class="inline-code">.fr*</span> class is non-responsive.
-        </p>
-      
-
-        Fig:2
-        <div class="grid fr5">
-            <div>fr1</div>
-            <div>fr2</div>
-            <div>fr3</div>
-            <div>fr4</div>
-            <div>fr5</div>
-            <div>fr6</div>
-            <div>fr7</div>
-            <div>fr8</div>
-            <div>fr9</div>
-            <div>fr10</div>
-            <div>fr11</div>
-            <div>fr12</div>
+                </code></pre>
         </div>
 
-        <div class="card">
-            <pre><code class="language-html" style="font-size: 1.2rem;">
-                &ltdiv class="grid fr5">
-                    &ltdiv>fr1&lt/div>
-                    &ltdiv>fr2&lt/div>
-                    &ltdiv>fr3&lt/div>
-                    &ltdiv>fr4&lt/div>
-                    &ltdiv>fr5&lt/div>
-                    &ltdiv>fr6&lt/div>
-                    &ltdiv>fr7&lt/div>
-                    &ltdiv>fr8&lt/div>
-                    &ltdiv>fr9&lt/div>
-                    &ltdiv>fr10&lt/div>
-                    &ltdiv>fr11&lt/div>
-                    &ltdiv>fr12&lt/div>
-                &lt/div>
-                </code> </pre>
-        </div><!-- card ends -->
-       
-        <p>
-            Use <span class="inline-code">.fr*-lg</span> or <span class="inline-code">.fr*-sm</span> class to create a n-fraction grid on large or small devices respectively. * = 1 to 12.
-        </p>
-      
-        Fig:3
-        <div class="grid fr5-lg fr2-sm">
-            <div>fr1</div>
-            <div>fr2</div>
-            <div>fr3</div>
-            <div>fr4</div>
-            <div>fr5</div>
-            <div>fr6</div>
-            <div>fr7</div>
-            <div>fr8</div>
-            <div>fr9</div>
-            <div>fr10</div>
-            <div>fr11</div>
-            <div>fr12</div>
-        </div>
 
-        <div class="card">
-            <pre><code class="language-html" style="font-size: 1.2rem;">
-                &ltdiv class="grid fr5-lg fr2-sm">
-                    &ltdiv>fr1&lt/div>
-                    &ltdiv>fr2&lt/div>
-                    &ltdiv>fr3&lt/div>
-                    &ltdiv>fr4&lt/div>
-                    &ltdiv>fr5&lt/div>
-                    &ltdiv>fr6&lt/div>
-                    &ltdiv>fr7&lt/div>
-                    &ltdiv>fr8&lt/div>
-                    &ltdiv>fr9&lt/div>
-                    &ltdiv>fr10&lt/div>
-                    &ltdiv>fr11&lt/div>
-                    &ltdiv>fr12&lt/div>
-                &lt/div>
-                </code> </pre>
-        </div><!-- card ends -->
+        <section>
+            <!-- fr customization -->
+            <h2>Customizing grid fractions</h2>
+            <p>The following classes are used to customize grid fractions -</p>
+            <div class="grid fr12 fr4-sm">
+                <code>.fr1</code>
+                <code>.fr2</code>
+                <code>.fr3</code>
+                <code>.fr4</code>
+                <code>.fr5</code>
+                <code>.fr6</code>
+                <code>.fr7</code>
+                <code>.fr8</code>
+                <code>.fr9</code>
+                <code>.f10</code>
+                <code>.f11</code>
+                <code>.f12</code>
+            </div>
 
-        <p>
-            Use <span class="inline-code">.auto</span> class to create a *-fraction grid where * = unknown. Each grid item will have min-width:100px;
-        </p>
+            <p>
+                For example, use <code>.fr5</code> to create a grid with 5 fractions in each row - 
+            </p>
+            <div class="grid fr5">
+                <div>fr1</div>
+                <div>fr2</div>
+                <div>fr3</div>
+                <div>fr4</div>
+                <div>fr5</div>
+                <div>fr6</div>
+                <div>fr7</div>
+                <div>fr8</div>
+                <div>fr9</div>
+                <div>fr10</div>
+                <div>fr11</div>
+                <div>fr12</div>
+            </div>
 
-        Fig:4
-        <div class="grid auto">
-            <div>fr1</div>
-            <div>fr2</div>
-            <div>fr3</div>
-            <div>fr4</div>
-            <div>fr5</div>
-            <div>fr6</div>
-            <div>fr7</div>
-            <div>fr8</div>
-            <div>fr9</div>
-            <div>fr10</div>
-            <div>fr11</div>
-            <div>fr12</div>
-        </div>
-
-        <div class="card">
-            <pre><code class="language-html" style="font-size: 1.2rem;">
-                &ltdiv class="grid auto">
-                    &ltdiv>fr1&lt/div>
-                    &ltdiv>fr2&lt/div>
-                    &ltdiv>fr3&lt/div>
-                    &ltdiv>fr4&lt/div>
-                    &ltdiv>fr5&lt/div>
-                    &ltdiv>fr6&lt/div>
-                    &ltdiv>fr7&lt/div>
-                    &ltdiv>fr8&lt/div>
-                    &ltdiv>fr9&lt/div>
-                    &ltdiv>fr10&lt/div>
-                    &ltdiv>fr11&lt/div>
-                    &ltdiv>fr12&lt/div>
-                &lt/div>
-                </code> </pre>
-        </div><!-- card ends -->
-        <!-- Method 2: .grid-lg-n or .grid-sm-n // -->
-
-        <h2>Creating grid items</h2>
-        <p>
-            There is no special class for grid items. All child elements within a <span class="inline-code">.grid</span> or <span class="inline-code">.monogrid</span> are grid items. But you should not mix different types of element in a single grid.
-        </p>
-        Fig:5
-        <div class="grid">
-            <div>fr1</div>
-            <span>fr2</span>
-            <section>fr3</section>
-            <div>fr4</div>
-            <div>fr5</div>
-            <div>fr6</div>
-            <div>fr7</div>
-            <div>fr8</div>
-            <div>fr9</div>
-            <div>fr10</div>
-            <div>fr11</div>
-            <div>fr12</div>
-        </div>
-        <div class="card">
-            <pre><code class="language-html" style="font-size: 1.2rem;">
-                    &ltdiv class="grid">
+            <div>
+                <pre><code class="language-html" style="font-size: 1.2rem;">
+                    &ltdiv class="grid fr5">
+                        &ltdiv>fr1&lt/div>
                         &ltdiv>fr2&lt/div>
-                        &ltspan>fr1&lt/span>
-                        &ltsection>fr3&lt/section>
+                        &ltdiv>fr3&lt/div>
+                        &ltdiv>fr4&lt/div>
+                        &ltdiv>fr5&lt/div>
+                        &ltdiv>fr6&lt/div>
+                        &ltdiv>fr7&lt/div>
+                        &ltdiv>fr8&lt/div>
+                        &ltdiv>fr9&lt/div>
+                        &ltdiv>fr10&lt/div>
+                        &ltdiv>fr11&lt/div>
+                        &ltdiv>fr12&lt/div>
+                    &lt/div>
+                    </code> </pre>
+            </div>
+        </section>
+
+        <!-- .auto grid -->
+        <section>
+            <h2>Create grid with unknown fractions</h2>
+            <p>
+                Use <code>.auto</code> to create a grid where grid childs quantity are unknown. <br>
+                Each child will have <code>min-width:100px</code>.
+            </p>
+
+            <div class="grid auto max7-lg">
+                <div>fr1</div>
+                <div>fr2</div>
+                <div>fr3</div>
+                <div>fr4</div>
+                <div>fr5</div>
+                <div>fr6</div>
+                <div>fr7</div>
+                <div>fr8</div>
+                <div>fr9</div>
+                <div>fr10</div>
+                <div>fr11</div>
+                <div>fr12</div>
+            </div>
+
+            <div>
+                <pre><code class="language-html" style="font-size: 1.2rem;">
+                    &ltdiv class="grid auto">
+                        &ltdiv>fr1&lt/div>
+                        &ltdiv>fr2&lt/div>
+                        &ltdiv>fr3&lt/div>
+                        &ltdiv>fr4&lt/div>
+                        &ltdiv>fr5&lt/div>
+                        &ltdiv>fr6&lt/div>
+                        &ltdiv>fr7&lt/div>
+                        &ltdiv>fr8&lt/div>
+                        &ltdiv>fr9&lt/div>
+                        &ltdiv>fr10&lt/div>
+                        &ltdiv>fr11&lt/div>
+                        &ltdiv>fr12&lt/div>
+                    &lt/div>
+                    </code></pre>
+            </div>
+
+            <p>
+                While using <code>.auto</code>, you can use the following classes to limit the number of fractions on each row-
+            </p>
+            <style>
+                .transparent{
+                   
+                  
+                        background-color: transparent;
+                   
+                }
+            </style>
+            <div class="grid fr6 transparent">
+                <div class="transparent"><code>.max1-sm</code></div>
+                <div class="transparent"><code>.max2-sm</code></div>
+                <div class="transparent"><code>.max3-sm</code></div>
+                <div class="transparent"><code>.max4-sm</code></div>
+                <div class="transparent"><code>.max5-sm</code></div>
+                <div class="transparent"><code>.max6-sm</code></div>
+                <div class="transparent"><code>.max7-sm</code></div>
+                <div class="transparent"><code>.max8-sm</code></div>
+                <div class="transparent"><code>.max9-sm</code></div>
+                <div class="transparent"><code>.max10-sm</code></div>
+                <div class="transparent"><code>.max11-sm</code></div>
+                <div class="transparent"><code>.max12-sm</code></div>
+            </div>
+            <br><br>
+            <div class="grid fr6 transparent">
+                <div class="transparent"><code>.max1-lg</code></div>
+                <div class="transparent"><code>.max2-lg</code></div>
+                <div class="transparent"><code>.max3-lg</code></div>
+                <div class="transparent"><code>.max4-lg</code></div>
+                <div class="transparent"><code>.max5-lg</code></div>
+                <div class="transparent"><code>.max6-lg</code></div>
+                <div class="transparent"><code>.max7-lg</code></div>
+                <div class="transparent"><code>.max8-lg</code></div>
+                <div class="transparent"><code>.max9-lg</code></div>
+                <div class="transparent"><code>.max10-lg</code></div>
+                <div class="transparent"><code>.max11-lg</code></div>
+                <div class="transparent"><code>.max12-lg</code></div>
+            </div>
+        </section> <!-- .auto grid -->
+
+       
+        <section>
+            <h2>Making the grid responsive</h2>
+            <p>
+                Use <code>-sm</code> or <code>-lg</code> suffix to make your grid responsive.
+            </p>
+        
+            <p>
+                For example, the following grid shows 12 fractions in large device and 3 fractions in small device -
+            </p>
+            <div class="grid fr12-lg fr3-sm">
+                <div>fr1</div>
+                <div>fr2</div>
+                <div>fr3</div>
+                <div>fr4</div>
+                <div>fr5</div>
+                <div>fr6</div>
+                <div>fr7</div>
+                <div>fr8</div>
+                <div>fr9</div>
+                <div>fr10</div>
+                <div>fr11</div>
+                <div>fr12</div>
+            </div>
+
+            <div>
+                <pre><code class="language-html" style="font-size: 1.2rem;">
+                    &ltdiv class="grid fr12-lg fr3-sm">
+                        &ltdiv>fr1&lt/div>
+                        &ltdiv>fr2&lt/div>
+                        &ltdiv>fr3&lt/div>
                         &ltdiv>fr4&lt/div>
                         &ltdiv>fr5&lt/div>
                         &ltdiv>fr6&lt/div>
@@ -228,155 +288,155 @@
                         &ltdiv>fr11&lt/div>
                         &ltdiv>fr12&lt/div>
                     &lt/div></code> </pre>
-        </div><!-- card ends -->
+            </div>
+        </section>
 
+        <!-- Creating grid childs -->
+        <section>
+            <h2>Creating grid childs</h2>
+            <p>
+                All child elements within a <code>.grid</code> are grid childs.  
+                But, mixing of different types of element in a single grid is not recommended.
+            </p>
+            <div class="grid">
+                <span>fr1</span>
+                <article>fr2</article>
+                <p style="margin-top: auto; margin-bottom: auto; font-size: unset; line-height: unset;">fr3</p>
+                <div>fr4</div>
+                <div>fr5</div>
+                <div>fr6</div>
+                <div>fr7</div>
+                <div>fr8</div>
+                <div>fr9</div>
+                <div>fr10</div>
+                <div>fr11</div>
+                <div>fr12</div>
+            </div>
+            <div><pre><code class="language-html" style="font-size: 1.2rem;">       
+                &ltdiv class="grid">
+                    &ltspan>fr1&lt/span>
+                    &ltarticle>fr1&lt/article>
+                    &ltp>fr3&lt/p>
+                    &ltdiv>fr4&lt/div>
+                    &ltdiv>fr5&lt/div>
+                    &ltdiv>fr6&lt/div>
+                    &ltdiv>fr7&lt/div>
+                    &ltdiv>fr8&lt/div>
+                    &ltdiv>fr9&lt/div>
+                    &ltdiv>fr10&lt/div>
+                    &ltdiv>fr11&lt/div>
+                    &ltdiv>fr12&lt/div>
+                &lt/div></code></pre>
+            </div>
+        </section>
         
-        <h2>Customizing grid items</h2>
-        <p>
-            By default, every child takes 1 fraction space.
+        <section>
+            <h2>Customizing grid child</h2>
+            <p>
+                By default, every child takes 1 fraction space. But you can this default behavior.
+            </p>
 
-            Use <span class="inline-code">.fr*</span> class in child element to span it *-fraction space.
-        </p>
-       
-      
-        Fig:6
-        <div class="grid">
-            <div>fr1</div>
-            <div class="fr4">fr2</div>
-            <div>fr3</div>
-            <div>fr4</div>
-            <div>fr5</div>
-            <div>fr6</div>
-            <div>fr7</div>
-            <div>fr8</div>
-            <div>fr9</div>
-            <div>fr10</div>
-            <div>fr11</div>
-            <div>fr12</div>
-        </div>
+            <p>
+                In the following example, <code>.fr4</code> and <code>.fr2</code> has been used to extend the childs.
+            </p>
+        
+            <div class="grid">
+                <div>&nbsp;</div>
+                <div class="fr4">.fr4 applied</div>
+                <div></div>
+                <div></div>
+                <div class="fr2">.fr2 applied</div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
 
-        <div class="card">
-            <pre><code class="language-html" style="font-size: 1.2rem;">
-                &ltdiv class="grid">
-                    &ltdiv>fr1&lt/div>
-                    &ltdiv class="fr4">fr2&lt/div>
-                    &ltdiv>fr3&lt/div>
-                    &ltdiv>fr4&lt/div>
-                    &ltdiv>fr5&lt/div>
-                    &ltdiv>fr6&lt/div>
-                    &ltdiv>fr7&lt/div>
-                    &ltdiv>fr8&lt/div>
-                    &ltdiv>fr9&lt/div>
-                    &ltdiv>fr10&lt/div>
-                    &ltdiv>fr11&lt/div>
-                    &ltdiv>fr12&lt/div>
-                &lt/div>
-                </code> </pre>
-        </div><!-- card ends -->
+            <div>
+                <pre><code class="language-html" style="font-size: 1.2rem;">
+                    &ltdiv class="grid">
+                        &ltdiv>&lt/div>
+                        &ltdiv class="fr4">.fr4 applied&lt/div>
+                        &ltdiv>&lt/div>
+                        &ltdiv>&lt/div>
+                        &ltdiv class="fr2">.fr2 applied&lt/div>
+                        &ltdiv>&lt/div>
+                        &ltdiv>&lt/div>
+                        &ltdiv>&lt/div>
+                    &lt/div>
+                    </code></pre>
+            </div>
 
-        <p>
-            Use <span class="inline-code">.fr*-sm</span> or <span class="inline-code">.fr*-lg</span> class to make a child's fraction responsive.
-        </p>
+            <p>
+                You can also make the child's fraction size responsive.
+            </p>
+            <p>
+                In the following example, <code>.fr5-lg</code> and <code>.fr1-sm</code> has been used to make the child's size responsive. <br>
+                In large device, it will take 5 fractions, but in small device it will take 1 fraction.
+            </p>
 
-        Fig:7
-        <div class="grid">
-            <div>fr1</div>
-            <div>fr2</div>
-            <div>fr3</div>
-            <div class="fr5-lg fr1-sm" >fr4</div>
-            <div>fr5</div>
-            <div>fr6</div>
-            <div>fr7</div>
-            <div>fr8</div>
-            <div>fr9</div>
-            <div>fr10</div>
-            <div>fr11</div>
-            <div>fr12</div>
-        </div>
+            <div class="grid">
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div class="fr5-lg fr1-sm">.fr5-lg  &nbsp;&nbsp;&nbsp;   .fr1-sm</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+            </div>
 
-        <div class="card">
-            <pre><code class="language-html" style="font-size: 1.2rem;">
-                &ltdiv class="grid">
-                    &ltdiv>fr1&lt/div>
-                    &ltdiv>fr2&lt/div>
-                    &ltdiv>fr3&lt/div>
-                    &ltdiv class="fr5-lg fr1-sm">fr4&lt/div>
-                    &ltdiv>fr5&lt/div>
-                    &ltdiv>fr6&lt/div>
-                    &ltdiv>fr7&lt/div>
-                    &ltdiv>fr8&lt/div>
-                    &ltdiv>fr9&lt/div>
-                    &ltdiv>fr10&lt/div>
-                    &ltdiv>fr11&lt/div>
-                    &ltdiv>fr12&lt/div>
-                &lt/div>
-                </code> </pre>
-        </div><!-- card ends -->
+            <div>
+                <pre><code class="language-html" style="font-size: 1.2rem;">
+                    &ltdiv class="grid">
+                        &ltdiv>&lt/div>
+                        &ltdiv>&lt/div>
+                        &ltdiv>&lt/div>
+                        &ltdiv class="fr5-lg fr1-sm">fr4&lt/div>
+                        &ltdiv>&lt/div>
+                        &ltdiv>&lt/div>
+                        &ltdiv>&lt/div>
+                        &ltdiv>&lt/div>
+                    &lt/div></code></pre>
+            </div>
 
+            <p>
+                Use <code>.from4</code> or  <code>.from4-sm</code> or <code>.from4-lg</code> to start a child from specific fraction.
+            </p>
+            <div class="grid">
+                <div>&nbsp;</div>
+                <div class="from4">.from4</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
+            </div>
 
-
-
-
-
-
-
-
-        <p>
-            Use <span class="inline-code">.from4</span> or <span class="inline-code">.from4-lg</span> or <span class="inline-code">.from4-sm</span> class to start a child from specific fraction.
-        </p>
-
-        Fig:7
-        <div class="grid">
-            <div>fr1</div>
-            <div class="from4">fr2</div>
-            <div>fr3</div>
-            <div>fr4</div>
-            <div>fr5</div>
-            <div>fr6</div>
-            <div>fr7</div>
-            <div>fr8</div>
-            <div>fr9</div>
-            <div>fr10</div>
-            <div>fr11</div>
-            <div>fr12</div>
-        </div>
-
-        <div class="card">
-            <pre><code class="language-html" style="font-size: 1.2rem;">
-                &ltdiv class="grid">
-                    &ltdiv>fr1&lt/div>
-                    &ltdiv class="from4">fr2&lt/div>
-                    &ltdiv>fr3&lt/div>
-                    &ltdiv>fr4&lt/div>
-                    &ltdiv>fr5&lt/div>
-                    &ltdiv>fr6&lt/div>
-                    &ltdiv>fr7&lt/div>
-                    &ltdiv>fr8&lt/div>
-                    &ltdiv>fr9&lt/div>
-                    &ltdiv>fr10&lt/div>
-                    &ltdiv>fr11&lt/div>
-                    &ltdiv>fr12&lt/div>
-                &lt/div>
-                </code> </pre>
-        </div><!-- card ends -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            <div>
+                <pre><code class="language-html" style="font-size: 1.2rem;">
+                    &ltdiv class="grid">
+                        &ltdiv>fr1&lt/div>
+                        &ltdiv class="from4">fr2&lt/div>
+                        &ltdiv>fr3&lt/div>
+                        &ltdiv>fr4&lt/div>
+                        &ltdiv>fr5&lt/div>
+                        &ltdiv>fr6&lt/div>
+                        &ltdiv>fr7&lt/div>
+                        &ltdiv>fr8&lt/div>
+                        &ltdiv>fr9&lt/div>
+                        &ltdiv>fr10&lt/div>
+                    &lt/div></code></pre>
+            </div>
+        </section>
     </main>
+    <footer style="text-align: center; font-size: 2rem; margin-top: 10px; margin-bottom: 10px;">
+        © Griddle
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src=" assets/prism.js"></script>
+    <script src="assets/prism.js"></script>
 
     <script>
         $(document).ready(function () {

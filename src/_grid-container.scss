@@ -37,6 +37,7 @@
             }
         }
     }
+
     @include large(){
         @for $i from 1 through 12 {
             &.fr#{$i}-lg{
@@ -50,79 +51,79 @@
         // --grid-layout-gap: 10px;
         --grid-column-count: 12;  //default 6 cols.
         @include small(){
-            &.max-fr1-sm{
+            &.max1-sm{
                 --grid-column-count: 1;
             }
-            &.max-fr2-sm{
+            &.max2-sm{
                 --grid-column-count: 2;
             }
-            &.max-fr3-sm{
+            &.max3-sm{
                 --grid-column-count: 3;
             }
-            &.max-fr4-sm{
+            &.max4-sm{
                 --grid-column-count: 4;
             }
-            &.max-fr5-sm{
+            &.max5-sm{
                 --grid-column-count: 5;
             }
-            &.max-fr6-sm{
+            &.max6-sm{
                 --grid-column-count: 6;
             }
-            &.max-fr7-sm{
+            &.max7-sm{
                 --grid-column-count: 7;
             }
-            &.max-fr8-sm{
+            &.max8-sm{
                 --grid-column-count: 8;
             }
-            &.max-fr9-sm{
+            &.max9-sm{
                 --grid-column-count: 9;
             }
-            &.max-fr10-sm{
+            &.max10-sm{
                 --grid-column-count: 10;
             }
-            &.max-fr11-sm{
+            &.max11-sm{
                 --grid-column-count: 11;
             }
-            &.max-fr12-sm{
+            &.max12-sm{
                 --grid-column-count: 12;
             }
         }
         
         @include large(){
-            &.max-fr1-lg{
+            &.max1-lg{
                 --grid-column-count: 1;
             }
-            &.max-fr2-lg{
+            &.max2-lg{
                 --grid-column-count: 2;
             }
-            &.max-fr3-lg{
+            &.max3-lg{
                 --grid-column-count: 3;
             }
-            &.max-fr4-lg{
+            &.max4-lg{
                 --grid-column-count: 4;
             }
-            &.max-fr5-lg{
+            &.max5-lg{
                 --grid-column-count: 5;
             }
-            &.max-fr6-lg{
+            &.max6-lg{
                 --grid-column-count: 6;
             }
-            &.max-fr7-lg{
+            &.max7-lg{
                 --grid-column-count: 7;
             }
-            &.max-fr8-lg{
+            &.max8-lg{
                 --grid-column-count: 8;
             }
-            &.max-fr9-lg{
+            &.max9-lg{
                 --grid-column-count: 9;
             }
-            &.max-fr10-lg{
+            &.max10-lg{
                 --grid-column-count: 10;
             }
-            &.max-fr11-lg{
+            &.max11-lg{
                 --grid-column-count: 11;
             }
-            &.max-fr12-lg{
+            &.max12-lg{
                 --grid-column-count: 12;
             }
         }
