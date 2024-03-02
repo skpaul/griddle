@@ -1,5 +1,5 @@
 # Griddle
-A simplified grid layout system using CSS Grid.
+A minimalistic grid layout system using CSS Grid.
 
 Installation: https://cdn.jsdelivr.net/gh/skpaul/griddle@1.0/griddle.min.css
 
