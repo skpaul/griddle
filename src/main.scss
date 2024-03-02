@@ -10,6 +10,6 @@
 //https://css-tricks.com/expandable-sections-within-a-css-grid/
 //https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow
 
-@import 'media_queries'; /*this must be on 2nd top*/
+@import 'media_queries'; /*this must be on top*/
 @import 'grid-container'; 
 @import 'grid-item'; 

@@ -14,8 +14,7 @@
 
     <link href="assets/prism.css" rel="stylesheet" />
     <link rel="stylesheet" href="assets/site.css">
-    <link rel="stylesheet" href="../griddle.min.css">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/skpaul/griddle@0.0.2/griddle.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/skpaul/griddle@1.0/griddle.min.css"> -->
     <style>
         code:not(code[class*=language-]) {
             /* font-family: Consolas; */
@@ -61,50 +60,56 @@
         <p style="text-align: center;"><code>v1.0</code></p>
     </header>
     <main class="" style="position:relative;">
-        <p>
-            Griddle uses <code>fr</code> (fraction) in stead of <code>col</code> (column).  <br> "fr" is the default unit in CSS Grid world. 
-        </p>
+        <section>
+            <h2>Installation</h2>
+            <code>&ltlink rel="stylesheet" href="https://cdn.jsdelivr.net/gh/skpaul/griddle@1.0/griddle.min.css"></code>
+        </section>
 
-        <h2>Creating a grid</h2>
-        <p>
-            Use <code>.grid</code> to create a grid. <code>.grid</code> creates a 12-fraction grid on large device and convert it to 1-fraction grid on small device. <br>
+        <section>
+            <h2>Creating a grid</h2>
+            <p>
+                Griddle uses <code>fr</code> (fr = fraction) in stead of <code>col</code> (column).  <br> "fr" is the default unit in CSS Grid world. 
+            </p>
+            <p>
+                Use <code>.grid</code> to create a grid. <code>.grid</code> creates a 12-fraction grid on large device and convert it to 1-fraction grid on small device.
+            </p>     
+            <p>
+                 You also can use <code>.griddle</code> instead of <code>.grid</code>, to avoid confict with other CSS framework.
+            </p>   
+            <div class="grid fullwidth">
+                <div>fr1</div>
+                <div>fr2</div>
+                <div>fr3</div>
+                <div>fr4</div>
+                <div>fr5</div>
+                <div>fr6</div>
+                <div>fr7</div>
+                <div>fr8</div>
+                <div>fr9</div>
+                <div>fr10</div>
+                <div>fr11</div>
+                <div>fr12</div>
+            </div>
 
-            You also can use <code>.griddle</code> instead of <code>.grid</code>, to avoid confict with other CSS framework.
-        </p>        
-        <div class="grid fullwidth">
-            <div>fr1</div>
-            <div>fr2</div>
-            <div>fr3</div>
-            <div>fr4</div>
-            <div>fr5</div>
-            <div>fr6</div>
-            <div>fr7</div>
-            <div>fr8</div>
-            <div>fr9</div>
-            <div>fr10</div>
-            <div>fr11</div>
-            <div>fr12</div>
-        </div>
-
-        <div>
-            <pre><code class="language-html" style="font-size: 1.2rem;">
-                &ltdiv class="grid">
-                    &ltdiv>fr1&lt/div>
-                    &ltdiv>fr2&lt/div>
-                    &ltdiv>fr3&lt/div>
-                    &ltdiv>fr4&lt/div>
-                    &ltdiv>fr5&lt/div>
-                    &ltdiv>fr6&lt/div>
-                    &ltdiv>fr7&lt/div>
-                    &ltdiv>fr8&lt/div>
-                    &ltdiv>fr9&lt/div>
-                    &ltdiv>fr10&lt/div>
-                    &ltdiv>fr11&lt/div>
-                    &ltdiv>fr12&lt/div>
-                &lt/div>
-                </code></pre>
-        </div>
-
+            <div>
+                <pre><code class="language-html" style="font-size: 1.2rem;">
+                    &ltdiv class="grid">
+                        &ltdiv>fr1&lt/div>
+                        &ltdiv>fr2&lt/div>
+                        &ltdiv>fr3&lt/div>
+                        &ltdiv>fr4&lt/div>
+                        &ltdiv>fr5&lt/div>
+                        &ltdiv>fr6&lt/div>
+                        &ltdiv>fr7&lt/div>
+                        &ltdiv>fr8&lt/div>
+                        &ltdiv>fr9&lt/div>
+                        &ltdiv>fr10&lt/div>
+                        &ltdiv>fr11&lt/div>
+                        &ltdiv>fr12&lt/div>
+                    &lt/div>
+                    </code></pre>
+            </div>
+        </section>
 
         <section>
             <!-- fr customization -->
