@@ -11,7 +11,7 @@
 // }
 
 .grid,.griddle{
-    --grid-layout-gap: 10px;
+    --grid-layout-gap: 0.625rem;
     display: grid;
     gap: var(--grid-layout-gap);
     grid-template-columns: repeat(1, 1fr);
