@@ -1,76 +1,27 @@
-// Extra small devices (phones, 600px and down)
-@mixin extra-small-devices {
-	@media only screen and (max-width: 600px) {
-		@content;
-	} 
-}
+// _variables.scss
+$breakpoints: (
+  xl: 1399.98px,
+  lg: 1199.98px,
+  md: 991.98px,
+  sm: 767.98px,
+  xs: 575.98px,
+  us: 479.98px
+);
 
-// Small devices (portrait tablets and large phones, 600px and up) 
-@mixin small-devices {
-	@media only screen and (min-width: 600px) {
-		@content;
-	} 
-}
+// Breakpoint naming conventions for grid classes
+$breakpoint-names: (
+  xl: 'xl',  // .fr1-xl
+  lg: 'lg',  // .fr1-lg
+  md: 'md',
+  sm: 'sm',
+  xs: 'xs',
+  us: 'us'  
+);
 
-// Medium devices (landscape tablets, 768px and up) 
-@mixin medium-devices {
-	@media only screen and (min-width: 768px) {
-		@content;
-	} 
-}
-
-///* Large devices (laptops/desktops, 992px and up) */
-@mixin large-devices {
-	@media only screen and (min-width: 992px) {     
-		@content;
-	} 
-}
-
-//for the simplicity, I opted only for two types of devices - sm & lg
-@mixin sm {
-    @media screen and (max-width: 991px) {
-        @content;
-    }
-}
-
-@mixin small {
-    @media screen and (max-width: 991px) {
-        @content;
-    }
-}
-
-@mixin lg {
-	@media only screen and (min-width: 992px) {     
-		@content;
-	} 
-}
-
-@mixin large {
-	@media only screen and (min-width: 992px) {     
-		@content;
-	} 
-}
-
-
-    // //How to use media query mixins
-    // //Media query can be inside a class
-    // .class{
-    //     width: 65%; //default 65%
-    //     @include sm{
-    //         width: 100%;  //on small devices 100%
-    //     }
-
-    //     @include lg{
-    //         width: 50%;  //on large devices 50%
-    //     }
-    // }
-
-    // //Media query can be outside a class
-    // @include lg{
-    //     .class{
-    //         width: 50%;  //on large devices 50%
-    //     }
-    // }
-
-
-
+// Mixins for each breakpoint (desktop-first)
+@mixin xl { @media (min-width: map-get($breakpoints, xl)) { @content; } } /* Extra Large devices (min-width: 1400px) */
+@mixin lg { @media (min-width: map-get($breakpoints, lg)) { @content; } } /* Large devices (min-width: 1200px) */
+@mixin md { @media (max-width: map-get($breakpoints, md)) { @content; } } /* Medium devices (max-width: 992px) */
+@mixin sm { @media (max-width: map-get($breakpoints, sm)) { @content; } } /* Small devices (max-width: 768px) */
+@mixin xs { @media (max-width: map-get($breakpoints, xs)) { @content; } } /* Extra Small devices (max-width: 576px) */
+@mixin us { @media (max-width: map-get($breakpoints, us)) { @content; } } /* Ultra Small devices (max-width: 480px) */

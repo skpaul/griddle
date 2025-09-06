@@ -1,514 +1,761 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Griddle</title>
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;900&family=Roboto:wght@300;400&display=swap"
-        rel="stylesheet">
-
-    <link href="assets/prism.css" rel="stylesheet" />
-    <link rel="stylesheet" href="assets/site.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/skpaul/griddle@2.0.1/griddle.min.css">
+    <title>Griddle CSS Framework Documentation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        code:not(code[class*=language-]) {
-            /* font-family: Consolas; */
-            font-family: "Inconsolata", monospace;
-            /* font-family: "Source Code Pro", monospace; */
-            border-radius: 0.3rem;
-            border: 1px solid #2b3e59;
-            padding: 4px 6px;
-            white-space: nowrap;
-            background-color: #162233;
-            /* font-size: 0.8rem; */
-            color: #ffe8b1;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        code[class*=language-] {
-            white-space: break-spaces;
+        
+        :root {
+            --primary: #3498db;
+            --primary-dark: #2980b9;
+            --secondary: #2ecc71;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --gray: #95a5a6;
+            --danger: #e74c3c;
+            --warning: #f39c12;
+            --text: #333;
+            --text-light: #777;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
-
-        :not(pre)>code[class*=language-],
-        pre[class*=language-] {
-            /* background: #22272e; */
-            background: #162233;
-            border-radius: 0.3rem;
-            border: 1px solid #2b3e59;
-            padding: 4px 6px;
-            /* white-space: ; */
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: #f9f9f9;
         }
-
-        section{
-            margin-top: 4rem;
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-
-        h2{
-            color: #ccd8e3;
-            font-size: 2rem;
+        
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: white;
+            padding: 3rem 0;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            align-self: start;
+            position: sticky;
+            top: 20px;
+        }
+        
+        .sidebar h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .sidebar a {
+            color: var(--text);
+            text-decoration: none;
+            transition: var(--transition);
+            display: block;
+            padding: 0.3rem 0;
+        }
+        
+        .sidebar a:hover {
+            color: var(--primary);
+            padding-left: 0.5rem;
+        }
+        
+        /* Documentation Content */
+        .documentation {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .doc-section {
+            margin-bottom: 3rem;
+        }
+        
+        .doc-section h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        .doc-section h3 {
+            color: var(--dark);
+            margin: 1.5rem 0 1rem;
+        }
+        
+        .doc-section p {
+            margin-bottom: 1rem;
+            color: var(--text);
+        }
+        
+        .code-example {
+            background: #f8f9fa;
+            border-left: 4px solid var(--primary);
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+            overflow-x: auto;
+        }
+        
+        .code-example pre {
+            font-family: 'Courier New', monospace;
+            margin: 0;
+        }
+        
+        .example-box {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin: 1.5rem 0;
+            border: 1px solid #e9ecef;
+        }
+        
+        /* Grid Examples */
+        .grid-example {
+            margin: 1.5rem 0;
+        }
+        
+        .grid {
+            --grid-layout-gap: 0.625rem;
+            display: grid;
+            gap: var(--grid-layout-gap);
+            margin-bottom: 1rem;
+        }
+        
+        .grid-item {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-radius: 4px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Interactive Examples */
+        .example-controls {
+            display: flex;
+            gap: 1rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .example-controls button {
+            padding: 0.5rem 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .example-controls button:hover {
+            background: var(--primary-dark);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .footer-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+        
+        /* Custom styles for examples */
+        .example-item {
+            background: var(--primary);
+            color: white;
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .card h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+        
+        .interactive-demo {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e9ecef;
         }
     </style>
+
+    <!-- Load Griddle CSS -->
+    <link rel="stylesheet" href="../griddle.min.css">
 </head>
-
 <body>
+    <!-- Header -->
     <header>
-        <div style="text-align: center; font-size: 4rem;">Griddle </div>
-        <h1 style="text-align: center;">Minimalistic grid system based on CSS Grid</h1>
-        <p style="text-align: center;"><code>v2.0.1</code></p>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Griddle<span>.CSS</span></div>
+                <nav class="nav-links">
+                    <a href="#getting-started">Getting Started</a>
+                    <a href="#grid-basics">Grid Basics</a>
+                    <a href="#responsive">Responsive</a>
+                    <a href="#examples">Examples</a>
+                </nav>
+            </div>
+        </div>
     </header>
-    <main class="" style="position:relative;">
-        <section>
-            <h2>Installation</h2>
-            <code>&ltlink rel="stylesheet" href="https://cdn.jsdelivr.net/gh/skpaul/griddle@2.0.1/griddle.min.css"></code>
-        </section>
 
-        <section>
-            <h2>Creating a grid</h2>
-            <p>
-                Griddle uses <code>fr</code> (fr = fraction) in stead of <code>col</code> (column).  <br> "fr" is the default unit in CSS Grid world. 
-            </p>
-            <p>
-                Use <code>.grid</code> to create a grid. <code>.grid</code> creates a 12-fraction grid on large device and convert it to 1-fraction grid on small device.
-            </p>     
-            <p>
-                 You also can use <code>.griddle</code> instead of <code>.grid</code>, to avoid confict with other CSS framework.
-            </p>   
-            <div class="grid fullwidth">
-                <div>fr1</div>
-                <div>fr2</div>
-                <div>fr3</div>
-                <div>fr4</div>
-                <div>fr5</div>
-                <div>fr6</div>
-                <div>fr7</div>
-                <div>fr8</div>
-                <div>fr9</div>
-                <div>fr10</div>
-                <div>fr11</div>
-                <div>fr12</div>
-            </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Griddle CSS Framework Documentation</h1>
+            <p>A lightweight, responsive CSS grid system for modern web development</p>
+        </div>
+    </section>
 
-            <div>
-                <pre><code class="language-html" style="font-size: 1.2rem;">
-                    &ltdiv class="grid">
-                        &ltdiv>fr1&lt/div>
-                        &ltdiv>fr2&lt/div>
-                        &ltdiv>fr3&lt/div>
-                        &ltdiv>fr4&lt/div>
-                        &ltdiv>fr5&lt/div>
-                        &ltdiv>fr6&lt/div>
-                        &ltdiv>fr7&lt/div>
-                        &ltdiv>fr8&lt/div>
-                        &ltdiv>fr9&lt/div>
-                        &ltdiv>fr10&lt/div>
-                        &ltdiv>fr11&lt/div>
-                        &ltdiv>fr12&lt/div>
-                    &lt/div>
-                    </code></pre>
-            </div>
-        </section>
+    <!-- Main Content -->
+    <div class="container main-content">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h3>Contents</h3>
+            <ul>
+                <li><a href="#getting-started">Getting Started</a></li>
+                <li><a href="#grid-basics">Grid Basics</a></li>
+                <li><a href="#responsive">Responsive Grids</a></li>
+                <li><a href="#auto-grid">Auto Grid</a></li>
+                <li><a href="#spanning">Item Spanning</a></li>
+                <li><a href="#gaps">Gap Utilities</a></li>
+                <li><a href="#examples">Examples</a></li>
+            </ul>
+        </aside>
 
-        <section>
-            <!-- fr customization -->
-            <h2>Customizing grid fractions</h2>
-            <p>The following classes are used to customize grid fractions -</p>
-            <div class="grid fr12 fr4-sm">
-                <code>.fr1</code>
-                <code>.fr2</code>
-                <code>.fr3</code>
-                <code>.fr4</code>
-                <code>.fr5</code>
-                <code>.fr6</code>
-                <code>.fr7</code>
-                <code>.fr8</code>
-                <code>.fr9</code>
-                <code>.f10</code>
-                <code>.f11</code>
-                <code>.f12</code>
-            </div>
-
-            <p>
-                For example, use <code>.fr5</code> to create a grid with 5 fractions in each row - 
-            </p>
-            <div class="grid fr5">
-                <div>fr1</div>
-                <div>fr2</div>
-                <div>fr3</div>
-                <div>fr4</div>
-                <div>fr5</div>
-                <div>fr6</div>
-                <div>fr7</div>
-                <div>fr8</div>
-                <div>fr9</div>
-                <div>fr10</div>
-                <div>fr11</div>
-                <div>fr12</div>
-            </div>
-
-            <div>
-                <pre><code class="language-html" style="font-size: 1.2rem;">
-                    &ltdiv class="grid fr5">
-                        &ltdiv>fr1&lt/div>
-                        &ltdiv>fr2&lt/div>
-                        &ltdiv>fr3&lt/div>
-                        &ltdiv>fr4&lt/div>
-                        &ltdiv>fr5&lt/div>
-                        &ltdiv>fr6&lt/div>
-                        &ltdiv>fr7&lt/div>
-                        &ltdiv>fr8&lt/div>
-                        &ltdiv>fr9&lt/div>
-                        &ltdiv>fr10&lt/div>
-                        &ltdiv>fr11&lt/div>
-                        &ltdiv>fr12&lt/div>
-                    &lt/div>
-                    </code> </pre>
-            </div>
-        </section>
-
-        <!-- .auto grid -->
-        <section>
-            <h2>Create grid with unknown fractions</h2>
-            <p>
-                Use <code>.auto</code> to create a grid where grid childs quantity are unknown. <br>
-                Each child will have <code>min-width:100px</code>.
-            </p>
-
-            <div class="grid auto max7-lg">
-                <div>fr1</div>
-                <div>fr2</div>
-                <div>fr3</div>
-                <div>fr4</div>
-                <div>fr5</div>
-                <div>fr6</div>
-                <div>fr7</div>
-                <div>fr8</div>
-                <div>fr9</div>
-                <div>fr10</div>
-                <div>fr11</div>
-                <div>fr12</div>
-            </div>
-
-            <div>
-                <pre><code class="language-html" style="font-size: 1.2rem;">
-                    &ltdiv class="grid auto">
-                        &ltdiv>fr1&lt/div>
-                        &ltdiv>fr2&lt/div>
-                        &ltdiv>fr3&lt/div>
-                        &ltdiv>fr4&lt/div>
-                        &ltdiv>fr5&lt/div>
-                        &ltdiv>fr6&lt/div>
-                        &ltdiv>fr7&lt/div>
-                        &ltdiv>fr8&lt/div>
-                        &ltdiv>fr9&lt/div>
-                        &ltdiv>fr10&lt/div>
-                        &ltdiv>fr11&lt/div>
-                        &ltdiv>fr12&lt/div>
-                    &lt/div>
-                    </code></pre>
-            </div>
-
-            <p>
-                While using <code>.auto</code>, you can use the following classes to limit the number of fractions on each row-
-            </p>
-            <style>
-                .transparent{
-                   
-                  
-                        background-color: transparent;
-                   
-                }
-            </style>
-            <div class="grid fr6 transparent">
-                <div class="transparent"><code>.max1-sm</code></div>
-                <div class="transparent"><code>.max2-sm</code></div>
-                <div class="transparent"><code>.max3-sm</code></div>
-                <div class="transparent"><code>.max4-sm</code></div>
-                <div class="transparent"><code>.max5-sm</code></div>
-                <div class="transparent"><code>.max6-sm</code></div>
-                <div class="transparent"><code>.max7-sm</code></div>
-                <div class="transparent"><code>.max8-sm</code></div>
-                <div class="transparent"><code>.max9-sm</code></div>
-                <div class="transparent"><code>.max10-sm</code></div>
-                <div class="transparent"><code>.max11-sm</code></div>
-                <div class="transparent"><code>.max12-sm</code></div>
-            </div>
-            <br><br>
-            <div class="grid fr6 transparent">
-                <div class="transparent"><code>.max1-lg</code></div>
-                <div class="transparent"><code>.max2-lg</code></div>
-                <div class="transparent"><code>.max3-lg</code></div>
-                <div class="transparent"><code>.max4-lg</code></div>
-                <div class="transparent"><code>.max5-lg</code></div>
-                <div class="transparent"><code>.max6-lg</code></div>
-                <div class="transparent"><code>.max7-lg</code></div>
-                <div class="transparent"><code>.max8-lg</code></div>
-                <div class="transparent"><code>.max9-lg</code></div>
-                <div class="transparent"><code>.max10-lg</code></div>
-                <div class="transparent"><code>.max11-lg</code></div>
-                <div class="transparent"><code>.max12-lg</code></div>
-            </div>
-        </section> <!-- .auto grid -->
-
-       
-        <section>
-            <h2>Making the grid responsive</h2>
-            <p>
-                Use <code>-sm</code> or <code>-lg</code> suffix to make your grid responsive.
-            </p>
-        
-            <p>
-                For example, the following grid shows 12 fractions in large device and 3 fractions in small device -
-            </p>
-            <div class="grid fr12-lg fr3-sm">
-                <div>fr1</div>
-                <div>fr2</div>
-                <div>fr3</div>
-                <div>fr4</div>
-                <div>fr5</div>
-                <div>fr6</div>
-                <div>fr7</div>
-                <div>fr8</div>
-                <div>fr9</div>
-                <div>fr10</div>
-                <div>fr11</div>
-                <div>fr12</div>
-            </div>
-
-            <div>
-                <pre><code class="language-html" style="font-size: 1.2rem;">
-                    &ltdiv class="grid fr12-lg fr3-sm">
-                        &ltdiv>fr1&lt/div>
-                        &ltdiv>fr2&lt/div>
-                        &ltdiv>fr3&lt/div>
-                        &ltdiv>fr4&lt/div>
-                        &ltdiv>fr5&lt/div>
-                        &ltdiv>fr6&lt/div>
-                        &ltdiv>fr7&lt/div>
-                        &ltdiv>fr8&lt/div>
-                        &ltdiv>fr9&lt/div>
-                        &ltdiv>fr10&lt/div>
-                        &ltdiv>fr11&lt/div>
-                        &ltdiv>fr12&lt/div>
-                    &lt/div></code> </pre>
-            </div>
-        </section>
-
-        <!-- Creating grid childs -->
-        <section>
-            <h2>Creating grid childs</h2>
-            <p>
-                All child elements within a <code>.grid</code> are grid childs.  
-                But, mixing of different types of element in a single grid is not recommended.
-            </p>
-            <div class="grid">
-                <span>fr1</span>
-                <article>fr2</article>
-                <p style="margin-top: auto; margin-bottom: auto; font-size: unset; line-height: unset;">fr3</p>
-                <div>fr4</div>
-                <div>fr5</div>
-                <div>fr6</div>
-                <div>fr7</div>
-                <div>fr8</div>
-                <div>fr9</div>
-                <div>fr10</div>
-                <div>fr11</div>
-                <div>fr12</div>
-            </div>
-            <div><pre><code class="language-html" style="font-size: 1.2rem;">       
-                &ltdiv class="grid">
-                    &ltspan>fr1&lt/span>
-                    &ltarticle>fr1&lt/article>
-                    &ltp>fr3&lt/p>
-                    &ltdiv>fr4&lt/div>
-                    &ltdiv>fr5&lt/div>
-                    &ltdiv>fr6&lt/div>
-                    &ltdiv>fr7&lt/div>
-                    &ltdiv>fr8&lt/div>
-                    &ltdiv>fr9&lt/div>
-                    &ltdiv>fr10&lt/div>
-                    &ltdiv>fr11&lt/div>
-                    &ltdiv>fr12&lt/div>
-                &lt/div></code></pre>
-            </div>
-        </section>
-        
-        <section>
-            <h2>Customizing grid child</h2>
-            <p>
-                By default, every child takes 1 fraction space. But you can this default behavior.
-            </p>
-
-            <p>
-                In the following example, <code>.fr4</code> and <code>.fr2</code> has been used to extend the childs.
-            </p>
-        
-            <div class="grid">
-                <div>&nbsp;</div>
-                <div class="fr4">.fr4 applied</div>
-                <div></div>
-                <div></div>
-                <div class="fr2">.fr2 applied</div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-
-            <div>
-                <pre><code class="language-html" style="font-size: 1.2rem;">
-                    &ltdiv class="grid">
-                        &ltdiv>&lt/div>
-                        &ltdiv class="fr4">.fr4 applied&lt/div>
-                        &ltdiv>&lt/div>
-                        &ltdiv>&lt/div>
-                        &ltdiv class="fr2">.fr2 applied&lt/div>
-                        &ltdiv>&lt/div>
-                        &ltdiv>&lt/div>
-                        &ltdiv>&lt/div>
-                    &lt/div>
-                    </code></pre>
-            </div>
-
-            <p>
-                You can also make the child's fraction size responsive.
-            </p>
-            <p>
-                In the following example, <code>.fr5-lg</code> and <code>.fr1-sm</code> has been used to make the child's size responsive. <br>
-                In large device, it will take 5 fractions, but in small device it will take 1 fraction.
-            </p>
-
-            <div class="grid">
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-                <div class="fr5-lg fr1-sm">.fr5-lg  &nbsp;&nbsp;&nbsp;   .fr1-sm</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-            </div>
-
-            <div>
-                <pre><code class="language-html" style="font-size: 1.2rem;">
-                    &ltdiv class="grid">
-                        &ltdiv>&lt/div>
-                        &ltdiv>&lt/div>
-                        &ltdiv>&lt/div>
-                        &ltdiv class="fr5-lg fr1-sm">fr4&lt/div>
-                        &ltdiv>&lt/div>
-                        &ltdiv>&lt/div>
-                        &ltdiv>&lt/div>
-                        &ltdiv>&lt/div>
-                    &lt/div></code></pre>
-            </div>
-
-            <p>
-                Use <code>.from4</code> or  <code>.from4-sm</code> or <code>.from4-lg</code> to start a child from specific fraction.
-            </p>
-            <div class="grid">
-                <div>&nbsp;</div>
-                <div class="from4">.from4</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-            </div>
-
-            <div>
-                <pre><code class="language-html" style="font-size: 1.2rem;">
-                    &ltdiv class="grid">
-                        &ltdiv>fr1&lt/div>
-                        &ltdiv class="from4">fr2&lt/div>
-                        &ltdiv>fr3&lt/div>
-                        &ltdiv>fr4&lt/div>
-                        &ltdiv>fr5&lt/div>
-                        &ltdiv>fr6&lt/div>
-                        &ltdiv>fr7&lt/div>
-                        &ltdiv>fr8&lt/div>
-                        &ltdiv>fr9&lt/div>
-                        &ltdiv>fr10&lt/div>
-                    &lt/div></code></pre>
-            </div>
-        </section>
-
-        <!-- Custom row/column gap -->
-        <section>
-            <h2>Custom row/column gap</h2>
-            <p>
-                By default, 0.625rem gap is used for all sides. But you can set different values for row and column. Available values are-
-            </p>
-
-            <div class="grid fr12">
-                <code>0.1</code><code>0.2</code><code>0.3</code><code>0.4</code><code>0.5</code><code>0.6</code><code>0.7</code><code>0.8</code><code>0.9</code><code>1.0</code><code>1.1</code><code>1.2</code><code>1.3</code><code>1.4</code><code>1.5</code><code>1.6</code><code>1.7</code><code>1.8</code><code>1.9</code><code>2.0</code><code>2.1</code><code>2.2</code><code>2.3</code><code>2.4</code><code>2.5</code><code>2.6</code><code>2.7</code><code>2.8</code><code>2.9</code><code>3.0</code><code>3.1</code><code>3.2</code><code>3.3</code><code>3.4</code><code>3.5</code><code>3.6</code><code>3.7</code><code>3.8</code><code>3.9</code><code>4.0</code>
-            </div>
-
-            <br>
-            <br>
-
-            <style>
-                table tr td{
-                    padding-top: 15px;
-                    padding-bottom: 15px;
-                }
-            </style>
-            <table>
-                <tr>
-                    <td><code>.rowgap-0.1</code></td>
-                    <td>:</td>
-                    <td>Sets <code>grid-row-gap:0.1rem</code></td>
-                </tr>
-                <tr>
-                    <td><code>.rowgap-1.3-sm</code></td>
-                    <td>:</td>
-                    <td>Sets <code>grid-row-gap:1.3rem</code> in small (mobile/tab) screen.</td>
-                </tr>
-                <tr>
-                    <td><code>.rowgap-1.3-lg</code></td>
-                    <td>:</td>
-                    <td>Sets <code>grid-row-gap:1.3rem</code> in large (desktop/laptop) screen.</td>
-                </tr>
-            </table>
-            <br>
-            <br>
-
-            <table>
-                <tr>
-                    <td><code>.colgap-0.1</code></td>
-                    <td>:</td>
-                    <td>Sets <code>grid-col-gap:0.1rem</code></td>
-                </tr>
-                <tr>
-                    <td><code>.colgap-1.3-sm</code></td>
-                    <td>:</td>
-                    <td>Sets <code>grid-col-gap:1.3rem</code> in small (mobile/tab) screen.</td>
-                </tr>
-                <tr>
-                    <td><code>.colgap-1.3-lg</code></td>
-                    <td>:</td>
-                    <td>Sets <code>grid-col-gap:1.3rem</code> in large (desktop/laptop) screen.</td>
-                </tr>
-            </table>
-
-        </section>
+        <!-- Documentation Content -->
+        <main class="documentation">
+            <!-- Getting Started -->
+            <section id="getting-started" class="doc-section">
+                <h2>Getting Started</h2>
+                <p>To use Griddle, include the CSS file in your HTML document:</p>
+                <div class="code-example">
+                    <pre>&lt;link rel="stylesheet" href="griddle.min.css"&gt;</pre>
+                </div>
+                <p>Create a grid container with the <code>.grid</code> class:</p>
+                <div class="code-example">
+                    <pre>&lt;div class="grid"&gt; ... &lt;/div&gt;</pre>
+                </div>
                 
-    </main>
-    <footer style="text-align: center; font-size: 2rem; margin-top: 10px; margin-bottom: 10px;">
-        © Griddle
+
+            </section>
+
+            <!-- Grid Basics -->
+            <section id="grid-basics" class="doc-section">
+                <h2>Customizing grid fractions</h2>
+                <p>Control the number of columns with these classes:</p>
+                <div class="grid fr12 fr4-sm">
+                    <code>.fr1</code>
+                    <code>.fr2</code>
+                    <code>.fr3</code>
+                    <code>.fr4</code>
+                    <code>.fr5</code>
+                    <code>.fr6</code>
+                    <code>.fr7</code>
+                    <code>.fr8</code>
+                    <code>.fr9</code>
+                    <code>.f10</code>
+                    <code>.f11</code>
+                    <code>.f12</code>
+                </div>
+
+                
+                <div class="example-box">
+                    <h3>Example: 3-column grid</h3>
+                    <div class="grid fr3">
+                        <div class="grid-item">Item 1</div>
+                        <div class="grid-item">Item 2</div>
+                        <div class="grid-item">Item 3</div>
+                    </div>
+                    <div class="code-example"><pre>&lt;div class="grid fr3"&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+  &lt;div&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+                </div>
+                
+            </section>
+
+            <!-- Responsive Grids -->
+            <section id="responsive" class="doc-section">
+                <h2>Responsive Grids</h2>
+                <p>Griddle provides responsive breakpoints for different screen sizes:</p>
+                <ul>
+                    <li><strong>xl</strong>: ≥1400px</li>
+                    <li><strong>lg</strong>: ≥1200px</li>
+                    <li><strong>md</strong>: ≤992px</li>
+                    <li><strong>sm</strong>: ≤768px</li>
+                    <li><strong>xs</strong>: ≤576px</li>
+                    <li><strong>us</strong>: ≤480px</li>
+                </ul>
+                
+                <div class="code-example">
+                    <pre>&lt;div class="grid fr4 fr3-md fr2-sm fr1-xs"&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+  &lt;div&gt;Item 3&lt;/div&gt;
+  &lt;div&gt;Item 4&lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+                
+                <div class="example-box">
+                    <h3>Live Example: Responsive Grid</h3>
+                    <p>Resize your browser to see how this grid responds to different screen sizes:</p>
+                    <div class="grid fr4 fr3-md fr2-sm fr1-xs">
+                        <div class="grid-item">Item 1</div>
+                        <div class="grid-item">Item 2</div>
+                        <div class="grid-item">Item 3</div>
+                        <div class="grid-item">Item 4</div>
+                    </div>
+                    <p>This grid will show:
+                        <ul>
+                            <li>4 columns on large screens</li>
+                            <li>3 columns on medium screens (≤992px)</li>
+                            <li>2 columns on small screens (≤768px)</li>
+                            <li>1 column on extra small screens (≤576px)</li>
+                        </ul>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Auto Grid -->
+            <section id="auto-grid" class="doc-section">
+                <h2>Auto Grid: Create grid with unknown fractions</h2>
+                <p>The auto grid automatically adjusts column sizes based on available space:</p>
+                <div class="code-example">
+                    <pre>&lt;div class="grid auto"&gt; ... &lt;/div&gt;</pre>
+                </div>
+                
+                <div class="example-box">
+                    <h3>Live Example: Auto Grid</h3>
+                    <p>Resize your browser to see how the auto grid adjusts:</p>
+                    <div class="grid auto">
+                        <div class="grid-item">Item 1</div>
+                        <div class="grid-item">Item 2</div>
+                        <div class="grid-item">Item 3</div>
+                        <div class="grid-item">Item 4</div>
+                        <div class="grid-item">Item 5</div>
+                        <div class="grid-item">Item 6</div>
+                        <div class="grid-item">Item 7</div>
+                    </div>
+                </div>
+                
+                <p>Control maximum columns at different breakpoints: <br>
+                    While using .auto, you can use the following classes to limit the number of fractions on each row-
+                </p>
+                <p>
+                    .max1-sm
+                    .max2-sm
+                    .max3-sm
+                    .max4-sm
+                    .max5-sm
+                    .max6-sm
+                    .max7-sm
+                    .max8-sm
+                    .max9-sm
+                    .max10-sm
+                    .max11-sm
+                    .max12-sm
+                </p>
+                <div class="code-example">
+                    <pre>&lt;div class="grid auto max4-lg max3-md max2-sm max1-xs"&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+  &lt;div&gt;Item 3&lt;/div&gt;
+  &lt;div&gt;Item 4&lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+                
+                <div class="example-box">
+                    <h3>Live Example: Auto Grid with Limits</h3>
+                    <p>This auto grid has maximum column limits at different breakpoints:</p>
+                    <div class="grid auto max4-lg max3-md max2-sm max1-xs">
+                        <div class="grid-item">Item 1</div>
+                        <div class="grid-item">Item 2</div>
+                        <div class="grid-item">Item 3</div>
+                        <div class="grid-item">Item 4</div>
+                        <div class="grid-item">Item 5</div>
+                        <div class="grid-item">Item 6</div>
+                        <div class="grid-item">Item 7</div>
+                        <div class="grid-item">Item 8</div>
+                    </div>
+                    <p>This grid will show at most:
+                        <ul>
+                            <li>4 columns on large screens (≥1200px)</li>
+                            <li>3 columns on medium screens (≤992px)</li>
+                            <li>2 columns on small screens (≤768px)</li>
+                            <li>1 column on extra small screens (≤576px)</li>
+                        </ul>
+                    </p>
+                </div>
+            </section>
+
+            <!-- Item Spanning -->
+            <section id="spanning" class="doc-section">
+                <h2>Item Spanning</h2>
+                <p>Control how many columns a grid item spans:</p>
+                <div class="code-example">
+                    <pre>&lt;div class="grid fr4"&gt;
+  &lt;div class="fr2"&gt;Spans 2 columns&lt;/div&gt;
+  &lt;div&gt;Normal column&lt;/div&gt;
+  &lt;div class="fullwidth"&gt;Spans all columns&lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+                
+                <div class="example-box">
+                    <h3>Example: Item spanning</h3>
+                    <div class="grid fr4">
+                        <div class="grid-item" style="background: var(--secondary);">Spans 2 columns (fr2)</div>
+                        <div class="grid-item">Normal column</div>
+                        <div class="grid-item">Normal column</div>
+                        <div class="grid-item" style="background: var(--warning);">Spans all columns (fullwidth)</div>
+                        <div class="grid-item">Normal column</div>
+                        <div class="grid-item fr3" style="background: var(--danger);">Spans 3 columns (fr3)</div>
+                    </div>
+                </div>
+                
+                <div class="interactive-demo">
+                    <h3>Interactive Demo: Try Different Span Options</h3>
+                    <div class="example-controls">
+                        <button onclick="changeItemSpan(1)">Span 1 Column</button>
+                        <button onclick="changeItemSpan(2)">Span 2 Columns</button>
+                        <button onclick="changeItemSpan(3)">Span 3 Columns</button>
+                        <button onclick="changeItemSpan(4)">Span 4 Columns</button>
+                        <button onclick="changeItemSpan('full')">Full Width</button>
+                    </div>
+                    <div class="grid fr4">
+                        <div class="grid-item">Normal</div>
+                        <div id="span-demo-item" class="grid-item" style="background: var(--secondary);">Interactive Item</div>
+                        <div class="grid-item">Normal</div>
+                        <div class="grid-item">Normal</div>
+                        <div class="grid-item">Normal</div>
+                        <div class="grid-item">Normal</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gap Utilities -->
+            <section id="gaps" class="doc-section">
+                <h2>Gap Utilities</h2>
+                <p>Control the gaps between grid items with precision:</p>
+                
+                <h3>Row Gaps</h3>
+                <div class="code-example">
+                    <pre>&lt;div class="grid fr3 rowgap-1.0"&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+  &lt;div&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+                
+                <h3>Column Gaps</h3>
+                <div class="code-example">
+                    <pre>&lt;div class="grid fr3 colgap-2.0"&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+  &lt;div&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+                
+                <div class="interactive-demo">
+                    <h3>Interactive Demo: Try Different Gap Sizes</h3>
+                    <div class="example-controls">
+                        <button onclick="changeGap('rowgap-0.5')">Small Row Gap</button>
+                        <button onclick="changeGap('rowgap-2.0')">Large Row Gap</button>
+                        <button onclick="changeGap('colgap-0.5')">Small Column Gap</button>
+                        <button onclick="changeGap('colgap-2.0')">Large Column Gap</button>
+                        <button onclick="changeGap('both')">Both Gaps</button>
+                        <button onclick="changeGap('reset')">Reset Gaps</button>
+                    </div>
+                    <div id="gap-demo" class="grid fr3">
+                        <div class="grid-item">Item 1</div>
+                        <div class="grid-item">Item 2</div>
+                        <div class="grid-item">Item 3</div>
+                        <div class="grid-item">Item 4</div>
+                        <div class="grid-item">Item 5</div>
+                        <div class="grid-item">Item 6</div>
+                    </div>
+                </div>
+                
+                <p>Available gap classes: <code>.rowgap-0.1</code> to <code>.rowgap-4.0</code> and <code>.colgap-0.1</code> to <code>.colgap-4.0</code> (in 0.1rem increments)</p>
+            </section>
+
+            <!-- Examples -->
+            <section id="examples" class="doc-section">
+                <h2>Examples</h2>
+                
+                <h3>Responsive Card Layout</h3>
+                <div class="code-example">
+                    <pre>&lt;div class="grid fr4 fr3-md fr2-sm fr1-xs rowgap-1.5 colgap-1.5"&gt;
+  &lt;div class="card"&gt;
+    &lt;h3&gt;Card 1&lt;/h3&gt;
+    &lt;p&gt;Card content&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="card fr2 fr1-md"&gt;
+    &lt;h3&gt;Wide Card&lt;/h3&gt;
+    &lt;p&gt;This card spans 2 columns on large screens&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class="card"&gt;
+    &lt;h3&gt;Card 3&lt;/h3&gt;
+    &lt;p&gt;Card content&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+                
+                <div class="example-box">
+                    <h3>Live Example: Card Layout</h3>
+                    <div class="grid fr4 fr3-md fr2-sm fr1-xs rowgap-1.5 colgap-1.5">
+                        <div class="card">
+                            <h3>Card 1</h3>
+                            <p>This is a standard card with some sample content.</p>
+                        </div>
+                        <div class="card fr2 fr1-md">
+                            <h3>Wide Card</h3>
+                            <p>This card spans 2 columns on large screens but only 1 column on medium screens and smaller.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Card 3</h3>
+                            <p>Another standard card with sample content.</p>
+                        </div>
+                        <div class="card">
+                            <h3>Card 4</h3>
+                            <p>Yet another standard card with sample content.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Photo Gallery with Dense Packing</h3>
+                <div class="code-example">
+                    <pre>&lt;div class="grid dense fr6 fr4-md fr3-sm fr2-xs"&gt;
+  &lt;div class="fr3 fr2-md fr1-sm"&gt;Landscape Photo&lt;/div&gt;
+  &lt;div&gt;Portrait Photo&lt;/div&gt;
+  &lt;div class="fr2"&gt;Square Photo&lt;/div&gt;
+  &lt;div&gt;Portrait Photo&lt;/div&gt;
+  &lt;div class="fr4 fr3-md fr2-sm"&gt;Panorama Photo&lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
+                
+                <div class="example-box">
+                    <h3>Live Example: Photo Gallery</h3>
+                    <div class="grid dense fr6 fr4-md fr3-sm fr2-xs">
+                        <div class="grid-item fr3 fr2-md fr1-sm" style="background: var(--secondary);">Landscape Photo</div>
+                        <div class="grid-item">Portrait Photo</div>
+                        <div class="grid-item fr2" style="background: var(--warning);">Square Photo</div>
+                        <div class="grid-item">Portrait Photo</div>
+                        <div class="grid-item fr4 fr3-md fr2-sm" style="background: var(--danger);">Panorama Photo</div>
+                        <div class="grid-item">Portrait Photo</div>
+                        <div class="grid-item">Portrait Photo</div>
+                        <div class="grid-item fr2">Square Photo</div>
+                    </div>
+                    <p>Notice how the <code>dense</code> class fills in empty spaces in the grid.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2023 Griddle CSS Framework. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-discord"></i></a>
+            </div>
+        </div>
     </footer>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="assets/prism.js"></script>
 
     <script>
-        $(document).ready(function () {
-           
+        // Simple smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
         });
+        
+        // Interactive demo functions
+        function changeGridLayout(layout) {
+            const grid = document.getElementById('interactive-grid');
+            grid.className = 'grid ' + layout;
+        }
+        
+        function changeItemSpan(span) {
+            const item = document.getElementById('span-demo-item');
+            if (span === 'full') {
+                item.className = 'grid-item fullwidth';
+            } else {
+                item.className = 'grid-item fr' + span;
+            }
+        }
+        
+        function changeGap(gapType) {
+            const grid = document.getElementById('gap-demo');
+            if (gapType === 'reset') {
+                grid.className = 'grid fr3';
+            } else if (gapType === 'both') {
+                grid.className = 'grid fr3 rowgap-1.0 colgap-1.0';
+            } else {
+                grid.className = 'grid fr3 ' + gapType;
+            }
+        }
     </script>
 </body>
-
 </html>

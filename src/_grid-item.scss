@@ -1,12 +1,14 @@
+/* ====================================================
+   Grid Child
+==================================================== */
+
 //https://learncssgrid.com/
 
 // An Auto-Filling CSS Grid With Max Columns of a Minimum Size
 // https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/
 
 
-//grid column width ------------>
-
-.grid,.griddle {
+.grid{
     &>.fullwidth {
         grid-column: 1 / -1;
     }
@@ -15,93 +17,35 @@
         &>.fr#{$i} {
             grid-column-end: span #{$i};
         }
-
-        @include small() {
-            &>.fr#{$i}-sm {
+        @include xl{
+            &>.fr#{$i}-xl {
                 grid-column-end: span #{$i};
             }
         }
-
-        @include large() {
+        @include lg{
             &>.fr#{$i}-lg {
                 grid-column-end: span #{$i};
             }
         }
-    }
-}
-
-
-//<--------------grid column width//
-
-//grid column start position ------------>
-.grid,.griddle {
-    //from1 - from12
-    @for $i from 1 through 12 {
-        &>.from#{$i} {
-            grid-column-start: #{$i};
-        }
-
-        @include small() {
-            &>.from#{$i}-sm {
-                grid-column-start: #{$i};
+        @include md{
+            &>.fr#{$i}-md {
+                grid-column-end: span #{$i};
             }
         }
-
-        @include large() {
-            &>.from#{$i}-lg {
-                grid-column-start: #{$i};
+        @include sm{
+            &>.fr#{$i}-sm {
+                grid-column-end: span #{$i};
+            }
+        }
+        @include xs{
+            &>.fr#{$i}-xs {
+                grid-column-end: span #{$i};
+            }
+        }
+        @include us{
+            &>.fr#{$i}-us {
+                grid-column-end: span #{$i};
             }
         }
     }
 }
-
-//<--------------grid column start position//
-
-
-
-//
-// @for $i from 1 through 12 {
-//     .gc-start-#{$i}, .fr-start-#{$i}{
-//         grid-column-start: #{$i};
-//     }
-
-//     .gc-end-#{$i}, .fr-end-#{$i}{
-//         grid-column-end: #{$i+1};
-//     }
-
-//     .gc-span-#{$i}, .fr-span-#{$i}, .gc-#{$i}, .fr-#{$i}{
-//         grid-column-end: span #{$i};
-//     }
-// }
-
-// @include small(){
-//     @for $i from 1 through 12 {
-//         .gc-start-#{$i}-sm, .fr-start-#{$i}-sm{
-//             grid-column-start: #{$i};
-//         }
-
-//         .gc-end-#{$i}-sm, .fr-end-#{$i}-sm{
-//             grid-column-end: #{$i+1};
-//         }
-
-//         .gc-span-#{$i}-sm, .fr-span-#{$i}-sm, .gc-#{$i}-sm, .fr-#{$i}-sm{
-//             grid-column-end: span #{$i};
-//         }
-//     }
-// }
-
-// @include large(){
-//     @for $i from 1 through 12 {
-//         .gc-start-#{$i}-lg, .fr-start-#{$i}-lg{
-//             grid-column-start: #{$i};
-//         }
-
-//         .gc-end-#{$i}-lg, .fr-end-#{$i}-lg{
-//             grid-column-end: #{$i+1};
-//         }
-
-//         .gc-span-#{$i}-lg, .fr-span-#{$i}-lg, .gc-#{$i}-lg, .fr-#{$i}-lg{
-//             grid-column-end: span #{$i};
-//         }
-//     }
-// }

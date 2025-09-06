@@ -1,27 +1,11 @@
 
-// [class^="grid"]{
-//     --grid-layout-gap: 10px;
-//     display: grid;
-//     gap: var(--grid-layout-gap);
-//     grid-template-columns: repeat(1, 1fr);
-
-//     @include large(){
-//         grid-template-columns: repeat(12, 1fr);
-//     }
-// }
-
-.grid,.griddle{
+.grid{
     --grid-layout-gap: 0.625rem;
     display: grid;
     gap: var(--grid-layout-gap);
-    grid-template-columns: repeat(1, 1fr);
 
     &.dense{
         grid-auto-flow: dense; /* [2] */
-    }
-
-    @include large(){
-        grid-template-columns: repeat(12, 1fr);
     }
 
     @for $i from 1 through 12 {
@@ -30,17 +14,44 @@
         }
     }
 
-    @include small(){
+    @include xl{
+        @for $i from 1 through 12 {
+            &.fr#{$i}-xl{
+                grid-template-columns: repeat(#{$i}, 1fr) !important;
+            }
+        }
+    }
+    @include lg{
+        @for $i from 1 through 12 {
+            &.fr#{$i}-lg{
+                grid-template-columns: repeat(#{$i}, 1fr) !important;
+            }
+        }
+    }
+    @include md{
+        @for $i from 1 through 12 {
+            &.fr#{$i}-md{
+                grid-template-columns: repeat(#{$i}, 1fr) !important;
+            }
+        }
+    }
+    @include sm{
         @for $i from 1 through 12 {
             &.fr#{$i}-sm{
                 grid-template-columns: repeat(#{$i}, 1fr) !important;
             }
         }
     }
-
-    @include large(){
+    @include xs{
         @for $i from 1 through 12 {
-            &.fr#{$i}-lg{
+            &.fr#{$i}-xs{
+                grid-template-columns: repeat(#{$i}, 1fr) !important;
+            }
+        }
+    }   
+    @include us{
+        @for $i from 1 through 12 {
+            &.fr#{$i}-us{
                 grid-template-columns: repeat(#{$i}, 1fr) !important;
             }
         }
@@ -48,9 +59,8 @@
 
     //A grid with unknown fractions 
     &.auto{
-        // --grid-layout-gap: 10px;
-        --grid-column-count: 12;  //default 6 cols.
-        @include small(){
+        --grid-column-count: 12; 
+        @include sm{
             &.max1-sm{
                 --grid-column-count: 1;
             }
@@ -89,7 +99,46 @@
             }
         }
         
-        @include large(){
+        @include md{
+            &.max1-md{
+                --grid-column-count: 1;
+            }
+            &.max2-md{
+                --grid-column-count: 2;
+            }
+            &.max3-md{
+                --grid-column-count: 3;
+            }
+            &.max4-md{
+                --grid-column-count: 4;
+            }
+            &.max5-md{
+                --grid-column-count: 5;
+            }
+            &.max6-md{
+                --grid-column-count: 6;
+            }
+            &.max7-md{
+                --grid-column-count: 7;
+            }
+            &.max8-md{
+                --grid-column-count: 8;
+            }
+            &.max9-md{
+                --grid-column-count: 9;
+            }
+            &.max10-md{
+                --grid-column-count: 10;
+            }
+            &.max11-md{
+                --grid-column-count: 11;
+            }
+            &.max12-md{
+                --grid-column-count: 12;
+            }
+        }
+
+        @include lg{
             &.max1-lg{
                 --grid-column-count: 1;
             }
@@ -133,114 +182,7 @@
         --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
         --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
 
-        display: grid;
-
         // grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
         grid-template-columns: repeat(auto-fit, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
-
-        // grid-auto-flow: row dense;
-        grid-gap: var(--grid-layout-gap);
     }
 }
-
-
-
-
-// //A grid with unlimited columns in a row
-// .grid.auto{
-//     // display: grid;
-//     // gap: 0.5rem;
-//     // max-width: 100%;
-//     --grid-layout-gap: 10px;
-//     --grid-column-count: 12;  //default 6 cols.
-//     @include small(){
-//         &.max-fr1-sm{
-//             --grid-column-count: 1;
-//         }
-//         &.max-fr2-sm{
-//             --grid-column-count: 2;
-//         }
-//         &.max-fr3-sm{
-//             --grid-column-count: 3;
-//         }
-//         &.max-fr4-sm{
-//             --grid-column-count: 4;
-//         }
-//         &.max-fr5-sm{
-//             --grid-column-count: 5;
-//         }
-//         &.max-fr6-sm{
-//             --grid-column-count: 6;
-//         }
-//         &.max-fr7-sm{
-//             --grid-column-count: 7;
-//         }
-//         &.max-fr8-sm{
-//             --grid-column-count: 8;
-//         }
-//         &.max-fr9-sm{
-//             --grid-column-count: 9;
-//         }
-//         &.max-fr10-sm{
-//             --grid-column-count: 10;
-//         }
-//         &.max-fr11-sm{
-//             --grid-column-count: 11;
-//         }
-//         &.max-fr12-sm{
-//             --grid-column-count: 12;
-//         }
-//     }
-    
-//     @include large(){
-//         &.max-fr1-lg{
-//             --grid-column-count: 1;
-//         }
-//         &.max-fr2-lg{
-//             --grid-column-count: 2;
-//         }
-//         &.max-fr3-lg{
-//             --grid-column-count: 3;
-//         }
-//         &.max-fr4-lg{
-//             --grid-column-count: 4;
-//         }
-//         &.max-fr5-lg{
-//             --grid-column-count: 5;
-//         }
-//         &.max-fr6-lg{
-//             --grid-column-count: 6;
-//         }
-//         &.max-fr7-lg{
-//             --grid-column-count: 7;
-//         }
-//         &.max-fr8-lg{
-//             --grid-column-count: 8;
-//         }
-//         &.max-fr9-lg{
-//             --grid-column-count: 9;
-//         }
-//         &.max-fr10-lg{
-//             --grid-column-count: 10;
-//         }
-//         &.max-fr11-lg{
-//             --grid-column-count: 11;
-//         }
-//         &.max-fr12-lg{
-//             --grid-column-count: 12;
-//         }
-//     }
-
-//     --grid-item--min-width: 100px;
-//     --gap-count: calc(var(--grid-column-count) - 1);
-//     --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
-//     --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
-
-//     display: grid;
-
-//     // grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
-//     grid-template-columns: repeat(auto-fit, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
-
-//     grid-auto-flow: row dense;
-//     grid-gap: var(--grid-layout-gap);
-// }
