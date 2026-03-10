@@ -18,9 +18,9 @@ $breakpoint-names: (
   us: 'us'  
 );
 
-// Mixins for each breakpoint (lg-base: base styles target ~1200px screens)
-@mixin xl { @media (min-width: map-get($breakpoints, xl)) { @content; } } /* Extra Large devices (min-width: 1399.98px) */
-@mixin lg { @media (max-width: map-get($breakpoints, lg)) { @content; } } /* Large devices (max-width: 1200px) */
+// Mixins for each breakpoint (desktop-first)
+@mixin xl { @media (min-width: map-get($breakpoints, xl)) { @content; } } /* Extra Large devices (min-width: 1400px) */
+@mixin lg { @media (min-width: map-get($breakpoints, lg)) { @content; } } /* Large devices (min-width: 1200px) */
 @mixin md { @media (max-width: map-get($breakpoints, md)) { @content; } } /* Medium devices (max-width: 992px) */
 @mixin sm { @media (max-width: map-get($breakpoints, sm)) { @content; } } /* Small devices (max-width: 768px) */
 @mixin xs { @media (max-width: map-get($breakpoints, xs)) { @content; } } /* Extra Small devices (max-width: 576px) */

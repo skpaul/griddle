@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Griddle CSS Framework Documentation</title>
+    <title>Griddle CSS - Lightweight Responsive Grid Framework</title>
+    <meta name="description" content="A lightweight, responsive CSS grid system for modern web development. Simple, powerful, and flexible.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -332,10 +333,187 @@
             border-radius: 8px;
             border: 1px solid #e9ecef;
         }
+        
+        /* Quick Start Box */
+        .quick-start {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .quick-start h3 {
+            margin: 0 0 1rem 0;
+            color: white;
+        }
+        
+        .quick-start code {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.8rem 1rem;
+            border-radius: 6px;
+            display: block;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            position: relative;
+        }
+        
+        .copy-btn {
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+        
+        .copy-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+        
+        /* Feature Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        
+        .feature-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            margin: 0.5rem 0;
+            color: var(--dark);
+        }
+        
+        .feature-card p {
+            margin: 0.5rem 0 0 0;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        /* Breakpoint indicator */
+        .breakpoint-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+        
+        .breakpoint-table th,
+        .breakpoint-table td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .breakpoint-table th {
+            background: var(--light);
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .breakpoint-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.6rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+        
+        .badge.success {
+            background: var(--secondary);
+        }
+        
+        /* Scroll to top button */
+        #scrollTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            opacity: 0;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+        }
+        
+        #scrollTop.visible {
+            opacity: 1;
+        }
+        
+        #scrollTop:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Installation tabs */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .tab-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            margin-bottom: -2px;
+        }
+        
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
     </style>
 
     <!-- Load Griddle CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/skpaul/griddle@2.1.1/griddle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/skpaul/griddle@2.1.2/griddle.min.css">
 </head>
 <body>
     <!-- Header -->
@@ -356,8 +534,41 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Griddle CSS Framework Documentation</h1>
+            <h1>Griddle CSS Framework <span class="badge success">v2.1.2</span></h1>
             <p>A lightweight, responsive CSS grid system for modern web development</p>
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="#getting-started" style="background: var(--primary); color: white; padding: 0.75rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; transition: var(--transition);" onmouseover="this.style.background='var(--primary-dark)'" onmouseout="this.style.background='var(--primary)'">Get Started</a>
+                <a href="#examples" style="background: white; color: var(--primary); padding: 0.75rem 2rem; border-radius: 6px; text-decoration: none; font-weight: 600; border: 2px solid var(--primary); transition: var(--transition);" onmouseover="this.style.background='var(--light)'" onmouseout="this.style.background='white'">View Examples</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section style="background: white; padding: 3rem 0;">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--dark); margin-bottom: 2rem;">Why Choose Griddle?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-feather-alt"></i>
+                    <h3>Lightweight</h3>
+                    <p>Minimal footprint with only essential grid utilities. No bloat, just what you need.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Responsive</h3>
+                    <p>Desktop-first approach with 6 breakpoints for perfect layouts on any device.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Fast Setup</h3>
+                    <p>Include one CSS file and start building. No configuration required.</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-puzzle-piece"></i>
+                    <h3>Flexible</h3>
+                    <p>12-column grid system with auto-grid, spanning, and gap utilities.</p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -367,13 +578,14 @@
         <aside class="sidebar">
             <h3>Contents</h3>
             <ul>
-                <li><a href="#getting-started">Getting Started</a></li>
-                <li><a href="#grid-basics">Grid Basics</a></li>
-                <li><a href="#responsive">Responsive Grids</a></li>
-                <li><a href="#auto-grid">Auto Grid</a></li>
-                <li><a href="#spanning">Item Spanning</a></li>
-                <li><a href="#gaps">Gap Utilities</a></li>
-                <li><a href="#examples">Examples</a></li>
+                <li><a href="#getting-started"><i class="fas fa-rocket" style="margin-right: 0.5rem;"></i>Getting Started</a></li>
+                <li><a href="#grid-basics"><i class="fas fa-th" style="margin-right: 0.5rem;"></i>Grid Basics</a></li>
+                <li><a href="#responsive"><i class="fas fa-mobile-alt" style="margin-right: 0.5rem;"></i>Responsive Grids</a></li>
+                <li><a href="#auto-grid"><i class="fas fa-magic" style="margin-right: 0.5rem;"></i>Auto Grid</a></li>
+                <li><a href="#spanning"><i class="fas fa-expand" style="margin-right: 0.5rem;"></i>Item Spanning</a></li>
+                <li><a href="#gaps"><i class="fas fa-arrows-alt-h" style="margin-right: 0.5rem;"></i>Gap Utilities</a></li>
+                <li><a href="#examples"><i class="fas fa-code" style="margin-right: 0.5rem;"></i>Examples</a></li>
+                <li><a href="#browser-support"><i class="fas fa-check-circle" style="margin-right: 0.5rem;"></i>Browser Support</a></li>
             </ul>
         </aside>
 
@@ -382,15 +594,52 @@
             <!-- Getting Started -->
             <section id="getting-started" class="doc-section">
                 <h2>Getting Started</h2>
-                <p>To use Griddle, include the CSS file in your HTML document:</p>
-                <div class="code-example">
-                    <pre>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/skpaul/griddle@2.1.1/griddle.min.css"&gt;</pre>
-                </div>
-                <p>Create a grid container with the <code>.grid</code> class:</p>
-                <div class="code-example">
-                    <pre>&lt;div class="grid"&gt; ... &lt;/div&gt;</pre>
+                
+                <div class="quick-start">
+                    <h3><i class="fas fa-rocket"></i> Quick Start</h3>
+                    <p>Add Griddle to your project via CDN:</p>
+                    <code>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/skpaul/griddle@2.1.2/griddle.min.css"&gt;</code>
+                    <button class="copy-btn" onclick="copyToClipboard('https://cdn.jsdelivr.net/gh/skpaul/griddle@2.1.2/griddle.min.css')"><i class="fas fa-copy"></i> Copy CDN Link</button>
                 </div>
                 
+                <h3>Installation Options</h3>
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="switchTab('cdn')">CDN</button>
+                    <button class="tab-btn" onclick="switchTab('download')">Download</button>
+                    <button class="tab-btn" onclick="switchTab('npm')">npm/yarn</button>
+                </div>
+                
+                <div id="cdn" class="tab-content active">
+                    <div class="code-example">
+                        <pre>&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/skpaul/griddle@2.1.2/griddle.min.css"&gt;</pre>
+                    </div>
+                </div>
+                
+                <div id="download" class="tab-content">
+                    <p>Download the latest version from GitHub and include it in your project:</p>
+                    <div class="code-example">
+                        <pre>&lt;link rel="stylesheet" href="path/to/griddle.min.css"&gt;</pre>
+                    </div>
+                </div>
+                
+                <div id="npm" class="tab-content">
+                    <p>Install via package manager (if available):</p>
+                    <div class="code-example">
+                        <pre>npm install griddle-css
+# or
+yarn add griddle-css</pre>
+                    </div>
+                </div>
+                
+                <h3 style="margin-top: 2rem;">Basic Usage</h3>
+                <p>Create a grid container with the <code>.grid</code> class:</p>
+                <div class="code-example">
+                    <pre>&lt;div class="grid fr3"&gt;
+  &lt;div&gt;Item 1&lt;/div&gt;
+  &lt;div&gt;Item 2&lt;/div&gt;
+  &lt;div&gt;Item 3&lt;/div&gt;
+&lt;/div&gt;</pre>
+                </div>
 
             </section>
 
@@ -408,9 +657,9 @@
                     <code>.fr7</code>
                     <code>.fr8</code>
                     <code>.fr9</code>
-                    <code>.f10</code>
-                    <code>.f11</code>
-                    <code>.f12</code>
+                    <code>.fr10</code>
+                    <code>.fr11</code>
+                    <code>.fr12</code>
                 </div>
 
                 
@@ -434,15 +683,62 @@
             <!-- Responsive Grids -->
             <section id="responsive" class="doc-section">
                 <h2>Responsive Grids</h2>
+                
+                <div class="example-box" style="background: #e8f4fd; border-left: 4px solid var(--primary);">
+                    <h3 style="margin-top: 0;"><i class="fas fa-lightbulb"></i> Best Practice: Desktop-First Approach</h3>
+                    <p><strong>Griddle follows a desktop-first methodology.</strong> Start with a default base class (e.g., <code>.fr3</code> or <code>.fr4</code>) that targets your primary desktop viewport (~1200px), then use responsive modifiers to simplify layouts as screens get smaller.</p>
+                    <p style="margin-bottom: 0;">Example: <code>&lt;div class="grid fr4 fr3-md fr2-sm fr1-xs"&gt;</code> establishes a 4-column base for desktop, progressively reducing to 3, 2, and finally 1 column as the viewport narrows.</p>
+                </div>
+                
                 <p>Griddle provides responsive breakpoints for different screen sizes:</p>
-                <ul>
-                    <li><strong>xl</strong>: ≥1400px</li>
-                    <li><strong>lg</strong>: ≥1200px</li>
-                    <li><strong>md</strong>: ≤992px</li>
-                    <li><strong>sm</strong>: ≤768px</li>
-                    <li><strong>xs</strong>: ≤576px</li>
-                    <li><strong>us</strong>: ≤480px</li>
-                </ul>
+                <table class="breakpoint-table">
+                    <thead>
+                        <tr>
+                            <th>Breakpoint</th>
+                            <th>Size</th>
+                            <th>Suffix</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Extra Large</strong></td>
+                            <td>≥1400px</td>
+                            <td><code>-xl</code></td>
+                            <td><code>.fr3-xl</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Large</strong></td>
+                            <td>≤1200px</td>
+                            <td><code>-lg</code></td>
+                            <td><code>.fr3-lg</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Medium</strong></td>
+                            <td>≤992px</td>
+                            <td><code>-md</code></td>
+                            <td><code>.fr2-md</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Small</strong></td>
+                            <td>≤768px</td>
+                            <td><code>-sm</code></td>
+                            <td><code>.fr2-sm</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Extra Small</strong></td>
+                            <td>≤576px</td>
+                            <td><code>-xs</code></td>
+                            <td><code>.fr1-xs</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ultra Small</strong></td>
+                            <td>≤480px</td>
+                            <td><code>-us</code></td>
+                            <td><code>.fr1-us</code></td>
+                        </tr>
+                    </tbody>
+                </table>
                 
                 <div class="code-example">
                     <pre>&lt;div class="grid fr4 fr3-md fr2-sm fr1-xs"&gt;
@@ -536,7 +832,7 @@
                     </div>
                     <p>This grid will show at most:
                         <ul>
-                            <li>4 columns on large screens (≥1200px)</li>
+                            <li>4 columns on large screens (≤1200px)</li>
                             <li>3 columns on medium screens (≤992px)</li>
                             <li>2 columns on small screens (≤768px)</li>
                             <li>1 column on extra small screens (≤576px)</li>
@@ -560,10 +856,10 @@
                 <div class="example-box">
                     <h3>Example: Item spanning</h3>
                     <div class="grid fr4">
-                        <div class="grid-item" style="background: var(--secondary);">Spans 2 columns (fr2)</div>
+                        <div class="grid-item fr2" style="background: var(--secondary);">Spans 2 columns (fr2)</div>
                         <div class="grid-item">Normal column</div>
                         <div class="grid-item">Normal column</div>
-                        <div class="grid-item" style="background: var(--warning);">Spans all columns (fullwidth)</div>
+                        <div class="grid-item fullwidth" style="background: var(--warning);">Spans all columns (fullwidth)</div>
                         <div class="grid-item">Normal column</div>
                         <div class="grid-item fr3" style="background: var(--danger);">Spans 3 columns (fr3)</div>
                     </div>
@@ -596,7 +892,7 @@
                 
                 <h3>Row Gaps</h3>
                 <div class="code-example">
-                    <pre>&lt;div class="grid fr3 rowgap-1.0"&gt;
+                    <pre>&lt;div class="grid fr3 rowgap-10"&gt;
   &lt;div&gt;Item 1&lt;/div&gt;
   &lt;div&gt;Item 2&lt;/div&gt;
   &lt;div&gt;Item 3&lt;/div&gt;
@@ -605,7 +901,7 @@
                 
                 <h3>Column Gaps</h3>
                 <div class="code-example">
-                    <pre>&lt;div class="grid fr3 colgap-2.0"&gt;
+                    <pre>&lt;div class="grid fr3 colgap-20"&gt;
   &lt;div&gt;Item 1&lt;/div&gt;
   &lt;div&gt;Item 2&lt;/div&gt;
   &lt;div&gt;Item 3&lt;/div&gt;
@@ -615,10 +911,10 @@
                 <div class="interactive-demo">
                     <h3>Interactive Demo: Try Different Gap Sizes</h3>
                     <div class="example-controls">
-                        <button onclick="changeGap('rowgap-0.5')">Small Row Gap</button>
-                        <button onclick="changeGap('rowgap-2.0')">Large Row Gap</button>
-                        <button onclick="changeGap('colgap-0.5')">Small Column Gap</button>
-                        <button onclick="changeGap('colgap-2.0')">Large Column Gap</button>
+                        <button onclick="changeGap('rowgap-05')">Small Row Gap</button>
+                        <button onclick="changeGap('rowgap-20')">Large Row Gap</button>
+                        <button onclick="changeGap('colgap-05')">Small Column Gap</button>
+                        <button onclick="changeGap('colgap-20')">Large Column Gap</button>
                         <button onclick="changeGap('both')">Both Gaps</button>
                         <button onclick="changeGap('reset')">Reset Gaps</button>
                     </div>
@@ -632,7 +928,7 @@
                     </div>
                 </div>
                 
-                <p>Available gap classes: <code>.rowgap-0.1</code> to <code>.rowgap-4.0</code> and <code>.colgap-0.1</code> to <code>.colgap-4.0</code> (in 0.1rem increments)</p>
+                <p>Available gap classes: <code>.rowgap-01</code> to <code>.rowgap-40</code> and <code>.colgap-01</code> to <code>.colgap-40</code> (corresponding to 0.1rem to 4.0rem in 0.1rem increments)</p>
             </section>
 
             <!-- Examples -->
@@ -641,7 +937,7 @@
                 
                 <h3>Responsive Card Layout</h3>
                 <div class="code-example">
-                    <pre>&lt;div class="grid fr4 fr3-md fr2-sm fr1-xs rowgap-1.5 colgap-1.5"&gt;
+                    <pre>&lt;div class="grid fr4 fr3-md fr2-sm fr1-xs rowgap-15 colgap-15"&gt;
   &lt;div class="card"&gt;
     &lt;h3&gt;Card 1&lt;/h3&gt;
     &lt;p&gt;Card content&lt;/p&gt;
@@ -659,7 +955,7 @@
                 
                 <div class="example-box">
                     <h3>Live Example: Card Layout</h3>
-                    <div class="grid fr4 fr3-md fr2-sm fr1-xs rowgap-1.5 colgap-1.5">
+                    <div class="grid fr4 fr3-md fr2-sm fr1-xs rowgap-15 colgap-15">
                         <div class="card">
                             <h3>Card 1</h3>
                             <p>This is a standard card with some sample content.</p>
@@ -705,8 +1001,44 @@
                     <p>Notice how the <code>dense</code> class fills in empty spaces in the grid.</p>
                 </div>
             </section>
+            
+            <!-- Browser Support -->
+            <section id="browser-support" class="doc-section">
+                <h2>Browser Support</h2>
+                <p>Griddle uses CSS Grid, which is supported by all modern browsers:</p>
+                <div class="features-grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));">
+                    <div class="feature-card" style="text-align: center;">
+                        <i class="fab fa-chrome" style="color: #4285F4;"></i>
+                        <h3 style="font-size: 1rem;">Chrome</h3>
+                        <p style="margin: 0;">57+</p>
+                    </div>
+                    <div class="feature-card" style="text-align: center;">
+                        <i class="fab fa-firefox" style="color: #FF7139;"></i>
+                        <h3 style="font-size: 1rem;">Firefox</h3>
+                        <p style="margin: 0;">52+</p>
+                    </div>
+                    <div class="feature-card" style="text-align: center;">
+                        <i class="fab fa-safari" style="color: #00C2FF;"></i>
+                        <h3 style="font-size: 1rem;">Safari</h3>
+                        <p style="margin: 0;">10.1+</p>
+                    </div>
+                    <div class="feature-card" style="text-align: center;">
+                        <i class="fab fa-edge" style="color: #0078D7;"></i>
+                        <h3 style="font-size: 1rem;">Edge</h3>
+                        <p style="margin: 0;">16+</p>
+                    </div>
+                </div>
+                <p style="margin-top: 1.5rem; padding: 1rem; background: #fff3cd; border-left: 4px solid #ffc107; border-radius: 4px;">
+                    <strong>Note:</strong> For IE11 support, consider using a CSS Grid polyfill or fallback layout.
+                </p>
+            </section>
         </main>
     </div>
+    
+    <!-- Scroll to Top Button -->
+    <button id="scrollTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <!-- Footer -->
     <footer>
@@ -725,11 +1057,66 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
             });
         });
+        
+        // Scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollTop = document.getElementById('scrollTop');
+            if (window.pageYOffset > 300) {
+                scrollTop.classList.add('visible');
+            } else {
+                scrollTop.classList.remove('visible');
+            }
+        });
+        
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Copy to clipboard function
+        function copyToClipboard(text) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => {
+                    alert('Copied to clipboard!');
+                });
+            } else {
+                // Fallback for older browsers
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('Copied to clipboard!');
+            }
+        }
+        
+        // Tab switching
+        function switchTab(tabName) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
         
         // Interactive demo functions
         function changeGridLayout(layout) {
@@ -751,7 +1138,7 @@
             if (gapType === 'reset') {
                 grid.className = 'grid fr3';
             } else if (gapType === 'both') {
-                grid.className = 'grid fr3 rowgap-1.0 colgap-1.0';
+                grid.className = 'grid fr3 rowgap-10 colgap-10';
             } else {
                 grid.className = 'grid fr3 ' + gapType;
             }
