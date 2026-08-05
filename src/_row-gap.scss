@@ -1,47 +1,15 @@
-// $rmValues: '0.1' '0.2' '0.3' '0.4' '0.5' '0.6' '0.7' '0.8' '0.9' '1.0' '1.1' '1.2' '1.3' '1.4' '1.5' '1.6' '1.7' '1.8' '1.9' '2.0' '2.1' '2.2' '2.3' '2.4' '2.5' '2.6' '2.7' '2.8' '2.9' '3.0' '3.1' '3.2' '3.3' '3.4' '3.5' '3.6' '3.7' '3.8' '3.9' '4.0';
-
-// @mixin create-row-gap-in-rem($device) {
-//     @each $value in $rmValues{
-//         $part1: str-slice($value, 1, 1); //when $value = '0.50', it returns '0'
-//         $part2: str-slice($value, 3, 4) ; //when $value = '0.50', it returns '50'
-//         &-#{$part1}#{$part2}#{$device}{
-//             grid-row-gap:#{$value} + 'rem' !important;
-//         }
-//     }
-// }
-
-// .rowgap{
-//     @include create-row-gap-in-rem("");
-//     @include xl{
-//         @include create-row-gap-in-rem("-xl");
-//     }
-//     @include lg{
-//         @include create-row-gap-in-rem("-lg");
-//     }
-//     @include md{
-//         @include create-row-gap-in-rem("-md");
-//     }
-//     @include sm{
-//         @include create-row-gap-in-rem("-sm");
-//     }
-//     @include xs{
-//         @include create-row-gap-in-rem("-xs");
-//     }
-//     @include us{
-//         @include create-row-gap-in-rem("-us");
-//     }
-// }
-
-
 @use "sass:map";
+@use "sass:math";
+@use "sass:string";
 
 .rowgap {
   // 1. Generate numeric list programmatically from 0.1 to 4.0 (step 0.1)
   @for $i from 1 through 40 {
-    $num: $i / 10; // Result is e.g. 0.1, 1.5, 4
+    // $num: $i / 10; // Result is e.g. 0.1, 1.5, 4
+     $num: math.div($i, 10); // Result is e.g. 0.1, 1.5, 4
     $val-str: if($i % 10 == 0, "#{$num}.0", "#{$num}"); // Formats whole numbers with .0 (e.g. '1.0')
-    $part1: str-slice($val-str, 1, 1);
-    $part2: str-slice($val-str, 3, 4);
+    $part1: string.slice($val-str, 1, 1);
+    $part2: string.slice($val-str, 3, 4);
 
     // Base utility classes (e.g. .rowgap-01, .rowgap-15)
     &-#{$part1}#{$part2} {
@@ -50,13 +18,14 @@
   }
 
   // 2. Responsive rowgap classes using $breakpointsNew and your breakpoint mixin
-  @each $bp in map.keys($breakpointsNew) {
+  @each $bp in map.keys($breakpoints) {
     @include breakpoint($bp) {
       @for $i from 1 through 40 {
-        $num: $i / 10;
+        // $num: $i / 10;
+        $num: math.div($i, 10); // Result is e.g. 0.1, 1.5, 4
         $val-str: if($i % 10 == 0, "#{$num}.0", "#{$num}");
-        $part1: str-slice($val-str, 1, 1);
-        $part2: str-slice($val-str, 3, 4);
+        $part1: string.slice($val-str, 1, 1);
+        $part2: string.slice($val-str, 3, 4);
 
         // Responsive utility classes (e.g. .rowgap-01-lg, .rowgap-15-md)
         &-#{$part1}#{$part2}-#{$bp} {

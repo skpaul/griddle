@@ -11,28 +11,6 @@
 // https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/
 
 
-
-// .grid {
-//     &>.fullwidth {
-//         grid-column: 1 / -1;
-//     }
-
-//     @for $i from 1 through 12 {
-//         &>.fr#{$i} {
-//             grid-column-end: span #{$i};
-//         }
-
-//         @each $bp in map.keys($breakpointsNew) {
-//             @include breakpoint($bp) {
-//                 &>.fr#{$i}-#{$bp} {
-//                     grid-column-end: span #{$i};
-//                 }
-//             }
-//         }
-//     }
-// }
-
-
 .grid {
   &>.fullwidth {
     grid-column: 1 / -1;
@@ -53,7 +31,7 @@
   }
 
   // 2. Responsive item spanning (grouped by media query)
-  @each $bp in map.keys($breakpointsNew) {
+  @each $bp in map.keys($breakpoints) {
     @include breakpoint($bp) {
       @for $i from 1 through 12 {
         &>.fr#{$i}-#{$bp} {

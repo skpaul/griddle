@@ -1,28 +1,9 @@
 @use "sass:list";
 @use "sass:map";
 
-// _variables.scss
-$breakpoints: (
-  xl: 1399.98px,
-  lg: 1199.98px,
-  md: 991.98px,
-  sm: 767.98px,
-  xs: 575.98px,
-  us: 479.98px
-);
-
-// Breakpoint naming conventions for grid classes
-$breakpoint-names: (
-  xl: 'xl',  // .fr1-xl
-  lg: 'lg',  // .fr1-lg
-  md: 'md',
-  sm: 'sm',
-  xs: 'xs',
-  us: 'us'  
-);
 
 // Desktop-first approach (base styles for large screens, overrides for smaller screens)
-$breakpointsNew: (
+$breakpoints: (
     xl: (min: 1399.98px),
     lg: (min: 1199.98px),
     md: (max: 991.98px),
@@ -32,7 +13,7 @@ $breakpointsNew: (
 );
 
 @mixin breakpoint($name) {
-    $bp: map.get($breakpointsNew, $name);
+    $bp: map.get($breakpoints, $name);
 
     @if map.has-key($bp, min) {
         @media (min-width: map.get($bp, min)) {

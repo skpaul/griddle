@@ -15,7 +15,7 @@
   }
 
   // 2. Responsive fraction grid (.fr1-lg, .fr2-md, etc.)
-  @each $bp-name, $bp-values in $breakpointsNew {
+  @each $bp-name, $bp-values in $breakpoints {
     @include breakpoint($bp-name) {
       @for $i from 1 through 12 {
         &.fr#{$i}-#{$bp-name} {
@@ -29,7 +29,7 @@
   &.auto {
     --grid-column-count: 12;
 
-    @each $bp-name, $bp-values in $breakpointsNew {
+    @each $bp-name, $bp-values in $breakpoints {
       @include breakpoint($bp-name) {
         @for $i from 1 through 12 {
           &.max#{$i}-#{$bp-name} {
