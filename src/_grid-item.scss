@@ -1,3 +1,6 @@
+@use "sass:meta";
+@use "sass:map";
+
 /* ====================================================
    Grid Child
 ==================================================== */
@@ -8,44 +11,55 @@
 // https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/
 
 
-.grid{
-    &>.fullwidth {
-        grid-column: 1 / -1;
-    }
 
-    @for $i from 1 through 12 {
-        &>.fr#{$i} {
-            grid-column-end: span #{$i};
-        }
-        @include xl{
-            &>.fr#{$i}-xl {
-                grid-column-end: span #{$i};
-            }
-        }
-        @include lg{
-            &>.fr#{$i}-lg {
-                grid-column-end: span #{$i};
-            }
-        }
-        @include md{
-            &>.fr#{$i}-md {
-                grid-column-end: span #{$i};
-            }
-        }
-        @include sm{
-            &>.fr#{$i}-sm {
-                grid-column-end: span #{$i};
-            }
-        }
-        @include xs{
-            &>.fr#{$i}-xs {
-                grid-column-end: span #{$i};
-            }
-        }
-        @include us{
-            &>.fr#{$i}-us {
-                grid-column-end: span #{$i};
-            }
-        }
+// .grid {
+//     &>.fullwidth {
+//         grid-column: 1 / -1;
+//     }
+
+//     @for $i from 1 through 12 {
+//         &>.fr#{$i} {
+//             grid-column-end: span #{$i};
+//         }
+
+//         @each $bp in map.keys($breakpointsNew) {
+//             @include breakpoint($bp) {
+//                 &>.fr#{$i}-#{$bp} {
+//                     grid-column-end: span #{$i};
+//                 }
+//             }
+//         }
+//     }
+// }
+
+
+.grid {
+  &>.fullwidth {
+    grid-column: 1 / -1;
+  }
+
+  // Utility to make an item expand to fill available track space
+  &>.auto-expand {
+    grid-column: auto / span 1; // Default
+    // Or if placed inside a grid with auto tracks:
+    width: 100%;
+  }
+
+  // 1. Base item spanning (e.g., .fr1 to .fr12)
+  @for $i from 1 through 12 {
+    &>.fr#{$i} {
+      grid-column-end: span #{$i};
     }
+  }
+
+  // 2. Responsive item spanning (grouped by media query)
+  @each $bp in map.keys($breakpointsNew) {
+    @include breakpoint($bp) {
+      @for $i from 1 through 12 {
+        &>.fr#{$i}-#{$bp} {
+          grid-column-end: span #{$i};
+        }
+      }
+    }
+  }
 }

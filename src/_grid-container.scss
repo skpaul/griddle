@@ -1,188 +1,52 @@
+.grid {
+  --grid-layout-gap: 0.625rem;
+  display: grid;
+  gap: var(--grid-layout-gap);
 
-.grid{
-    --grid-layout-gap: 0.625rem;
-    display: grid;
-    gap: var(--grid-layout-gap);
+  &.dense {
+    grid-auto-flow: dense;
+  }
 
-    &.dense{
-        grid-auto-flow: dense; /* [2] */
+  // 1. Base fraction grid (.fr1 to .fr12)
+  @for $i from 1 through 12 {
+    &.fr#{$i} {
+      grid-template-columns: repeat(#{$i}, 1fr) !important;
     }
+  }
 
-    @for $i from 1 through 12 {
-        &.fr#{$i}{
-            grid-template-columns: repeat(#{$i}, 1fr) !important;
+  // 2. Responsive fraction grid (.fr1-lg, .fr2-md, etc.)
+  @each $bp-name, $bp-values in $breakpointsNew {
+    @include breakpoint($bp-name) {
+      @for $i from 1 through 12 {
+        &.fr#{$i}-#{$bp-name} {
+          grid-template-columns: repeat(#{$i}, 1fr) !important;
         }
+      }
     }
+  }
 
-    @include xl{
+  // 3. Auto grid with dynamic max column constraints
+  &.auto {
+    --grid-column-count: 12;
+
+    @each $bp-name, $bp-values in $breakpointsNew {
+      @include breakpoint($bp-name) {
         @for $i from 1 through 12 {
-            &.fr#{$i}-xl{
-                grid-template-columns: repeat(#{$i}, 1fr) !important;
-            }
+          &.max#{$i}-#{$bp-name} {
+            --grid-column-count: #{$i};
+          }
         }
-    }
-    @include lg{
-        @for $i from 1 through 12 {
-            &.fr#{$i}-lg{
-                grid-template-columns: repeat(#{$i}, 1fr) !important;
-            }
-        }
-    }
-    @include md{
-        @for $i from 1 through 12 {
-            &.fr#{$i}-md{
-                grid-template-columns: repeat(#{$i}, 1fr) !important;
-            }
-        }
-    }
-    @include sm{
-        @for $i from 1 through 12 {
-            &.fr#{$i}-sm{
-                grid-template-columns: repeat(#{$i}, 1fr) !important;
-            }
-        }
-    }
-    @include xs{
-        @for $i from 1 through 12 {
-            &.fr#{$i}-xs{
-                grid-template-columns: repeat(#{$i}, 1fr) !important;
-            }
-        }
-    }   
-    @include us{
-        @for $i from 1 through 12 {
-            &.fr#{$i}-us{
-                grid-template-columns: repeat(#{$i}, 1fr) !important;
-            }
-        }
+      }
     }
 
-    //A grid with unknown fractions 
-    &.auto{
-        --grid-column-count: 12; 
-        @include sm{
-            &.max1-sm{
-                --grid-column-count: 1;
-            }
-            &.max2-sm{
-                --grid-column-count: 2;
-            }
-            &.max3-sm{
-                --grid-column-count: 3;
-            }
-            &.max4-sm{
-                --grid-column-count: 4;
-            }
-            &.max5-sm{
-                --grid-column-count: 5;
-            }
-            &.max6-sm{
-                --grid-column-count: 6;
-            }
-            &.max7-sm{
-                --grid-column-count: 7;
-            }
-            &.max8-sm{
-                --grid-column-count: 8;
-            }
-            &.max9-sm{
-                --grid-column-count: 9;
-            }
-            &.max10-sm{
-                --grid-column-count: 10;
-            }
-            &.max11-sm{
-                --grid-column-count: 11;
-            }
-            &.max12-sm{
-                --grid-column-count: 12;
-            }
-        }
-        
-        @include md{
-            &.max1-md{
-                --grid-column-count: 1;
-            }
-            &.max2-md{
-                --grid-column-count: 2;
-            }
-            &.max3-md{
-                --grid-column-count: 3;
-            }
-            &.max4-md{
-                --grid-column-count: 4;
-            }
-            &.max5-md{
-                --grid-column-count: 5;
-            }
-            &.max6-md{
-                --grid-column-count: 6;
-            }
-            &.max7-md{
-                --grid-column-count: 7;
-            }
-            &.max8-md{
-                --grid-column-count: 8;
-            }
-            &.max9-md{
-                --grid-column-count: 9;
-            }
-            &.max10-md{
-                --grid-column-count: 10;
-            }
-            &.max11-md{
-                --grid-column-count: 11;
-            }
-            &.max12-md{
-                --grid-column-count: 12;
-            }
-        }
+    --grid-item--min-width: 100px;
+    --gap-count: calc(var(--grid-column-count) - 1);
+    --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
+    --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
 
-        @include lg{
-            &.max1-lg{
-                --grid-column-count: 1;
-            }
-            &.max2-lg{
-                --grid-column-count: 2;
-            }
-            &.max3-lg{
-                --grid-column-count: 3;
-            }
-            &.max4-lg{
-                --grid-column-count: 4;
-            }
-            &.max5-lg{
-                --grid-column-count: 5;
-            }
-            &.max6-lg{
-                --grid-column-count: 6;
-            }
-            &.max7-lg{
-                --grid-column-count: 7;
-            }
-            &.max8-lg{
-                --grid-column-count: 8;
-            }
-            &.max9-lg{
-                --grid-column-count: 9;
-            }
-            &.max10-lg{
-                --grid-column-count: 10;
-            }
-            &.max11-lg{
-                --grid-column-count: 11;
-            }
-            &.max12-lg{
-                --grid-column-count: 12;
-            }
-        }
-
-        --grid-item--min-width: 100px;
-        --gap-count: calc(var(--grid-column-count) - 1);
-        --total-gap-width: calc(var(--gap-count) * var(--grid-layout-gap));
-        --grid-item--max-width: calc((100% - var(--total-gap-width)) / var(--grid-column-count));
-
-        // grid-template-columns: repeat(auto-fill, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
-        grid-template-columns: repeat(auto-fit, minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr));
-    }
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(max(var(--grid-item--min-width), var(--grid-item--max-width)), 1fr)
+    );
+  }
 }
